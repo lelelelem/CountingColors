@@ -63,18 +63,21 @@ class GameScreen extends Screen {
 
 		for (int i = 0; i < touches.size(); i++) {
 			TouchEvent forTouch = touches.get(i);
-
+			Log.i(TAG, "SWWET" + mArrayList2x.get(0) + " touche"
+					+ forTouch.x);
 			if (forTouch.type == TouchEvent.TOUCH_UP) {
 				if (canTouch
-						&& (new methods().inBounds(forTouch,
+						&& ((new methods().inBounds(forTouch,
 								mArrayListx.get(currindex),
-								(int)mPixmaps.head.CurrentY, 245, 400))) {
-					Log.i(TAG, "SWWET" + mArrayListx.get(currindex) + " touche"
-							+ forTouch.x);
+								(int)mPixmaps.head.CurrentY, 245, 400))||((new methods().inBounds(forTouch,
+										mArrayList2x.get(currindex),
+										(int)mPixmaps.head.CurrentY, 245, 400))))) {
+					
 					Graphics graphics = game.getGraphics();
 					
 					graphics.clear(Color.BLACK);
 					mArrayListx.remove(0);
+					mArrayList2x.remove(0);
 					mArrayListy.remove(0);
 					tempData = mPixmaps.head;
 					mPixmaps.delete();
@@ -237,7 +240,8 @@ class GameScreen extends Screen {
 				hashMap.put(Integer.toString(i), 0);
 				PlaceValue(i, 0);
 				mArrayListx.add(correctCoor[0][0]);
-				
+				if(odds!=1)
+					mArrayList2x.add(9999);
 				PlaceTileScore(0);
 				
 				Log.i(TAG, "ehemPlaced! " + arrayList.get(index));
@@ -246,7 +250,7 @@ class GameScreen extends Screen {
 					hashMap.put(Integer.toString(i), 0);
 					PlaceValue(i, 1);
 					mArrayList2x.add(correctCoor[1][0]);
-					Log.i(TAG, "ehemOdds!! " + arrayList.get(index));
+					Log.i(TAG, "ehemOdds!! " + i);
 					
 					PlaceTileScore(1);
 				}
@@ -267,7 +271,6 @@ class GameScreen extends Screen {
 
 	private void PlaceValue(int i, int row) {
 		if (i == 0) {
-			
 			correctCoor[row][0] = Bounds.xBounds1stLeft.getCoor();
 		} else if (i == 1) {
 
