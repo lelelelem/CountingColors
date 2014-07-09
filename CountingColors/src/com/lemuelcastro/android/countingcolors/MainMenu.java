@@ -6,12 +6,14 @@ package com.lemuelcastro.android.countingcolors;
 
 import java.util.List;
 
+import android.support.v4.util.LruCache;
 import android.util.Log;
 
 import com.badlogic.androidgames.framework.Game;
 import com.badlogic.androidgames.framework.Graphics;
 import com.badlogic.androidgames.framework.Graphics.PixmapFormat;
 import com.badlogic.androidgames.framework.Input.TouchEvent;
+import com.badlogic.androidgames.framework.Pixmap;
 import com.badlogic.androidgames.framework.Screen;
 
 public class MainMenu extends Screen {
@@ -25,7 +27,7 @@ public class MainMenu extends Screen {
 	public MainMenu(Game game, ActionResolverAndroid aResolverAndroid) {
 		super(game);
 		actionResolver = aResolverAndroid;
-
+		actionResolver.setupCache();
 		Graphics g = game.getGraphics();
 
 		Assets.background = g.newPixmap("background2.png", PixmapFormat.RGB565);
@@ -34,8 +36,10 @@ public class MainMenu extends Screen {
 		Assets.blueButton = g
 				.newPixmap("blueButton.png", PixmapFormat.ARGB4444);
 		Assets.redButton = g.newPixmap("pinkbutton.png", PixmapFormat.ARGB4444);
+		
 	}
 
+	
 	@Override
 	public void update(float deltaTime) {
 
@@ -49,8 +53,7 @@ public class MainMenu extends Screen {
 
 			if (forTouch.type == TouchEvent.TOUCH_UP) {
 				if (new methods().inBounds(forTouch, 336, 392, 792, 596)) {
-					Log.i(TAG, forTouch.x + " woops" + forTouch.y + " ");
-					game.setScreen(new GameScreen(game));
+					game.setScreen(new GameScreen(game,actionResolver));
 				}
 
 				else if (new methods().inBounds(forTouch, 336, 1048, 792, 596)) {
@@ -76,8 +79,6 @@ public class MainMenu extends Screen {
 		
 		graphics.drawPixmap(Assets.redButton, 336, 392);
 		graphics.drawPixmap(Assets.blueButton, 336, 1048);
-		
-
 		loaded = true;
 	}
 
@@ -95,8 +96,14 @@ public class MainMenu extends Screen {
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
+
+		Assets.background.dispose();
+		Assets.blueButton.dispose();
+		Assets.redButton.dispose();
 
 	}
 
 }
+
+
+

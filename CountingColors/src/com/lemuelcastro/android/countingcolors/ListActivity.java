@@ -6,9 +6,6 @@ public class ListActivity extends SingleFragmentActivity{
 
 	@Override
 	protected Fragment setupFragment() {
-		Assets.blueButton.dispose();
-		Assets.redButton.dispose();
-		Assets.background.dispose();
 		return new ListFragment();
 	}
 

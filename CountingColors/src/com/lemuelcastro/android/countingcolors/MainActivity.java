@@ -1,5 +1,7 @@
 package com.lemuelcastro.android.countingcolors;
 
+import android.util.Log;
+
 import com.badlogic.androidgames.framework.Screen;
 import com.badlogic.androidgames.framework.impl.AndroidGame;
 
@@ -12,9 +14,13 @@ public class MainActivity extends AndroidGame {
 	@Override
 	public Screen getStartScreen() {
 		mActionResolverAndroid = new ActionResolverAndroid(this);
+		
 		return new MainMenu(this, mActionResolverAndroid);
 	}
 	
+	public void yoh(){
+		Log.i(TAG_STRING, "TEDEN");
+	}
 
 	@Override
 	protected void onDestroy() {

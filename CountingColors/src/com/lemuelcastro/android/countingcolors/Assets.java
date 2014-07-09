@@ -16,6 +16,7 @@ public class Assets {
 	public static Pixmap blueButton;
 	public static Pixmap redButton;
 	
+	public static Pixmap numbers;
 	
 	public static Pixmap bodies[]= new Pixmap[4];
 	
