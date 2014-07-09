@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">CountingColors</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="scores">SCORES</string>
     <string name="action_settings">Settings</string>
 
 </resources>

@@ -1,7 +1,24 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lemuelcastro.android.countingcolors.MainActivity"
-    tools:ignore="MergeRootFrame" />
+    android:background="@color/White"
+    android:orientation="vertical" >
+    
+ <TextView
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:text="@string/scores"
+     android:textColor="@color/Crimson"
+     android:textSize="58sp"
+     android:paddingTop="40dp"
+     android:paddingBottom="40dp"
+     android:gravity="center" />
+ 
+ <FrameLayout 
+     android:id="@+id/list"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"/>
+
+</LinearLayout>

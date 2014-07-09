@@ -1,23 +1,26 @@
 package com.lemuelcastro.android.countingcolors;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
+import com.badlogic.androidgames.framework.Screen;
+import com.badlogic.androidgames.framework.impl.AndroidGame;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AndroidGame {
+
+	private static final String TAG_STRING = "AndroidGame";
+	private ActionResolverAndroid mActionResolverAndroid;
+	
+	
+	@Override
+	public Screen getStartScreen() {
+		mActionResolverAndroid = new ActionResolverAndroid(this);
+		return new MainMenu(this, mActionResolverAndroid);
+	}
+	
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		
 	}
-
+	
 }
