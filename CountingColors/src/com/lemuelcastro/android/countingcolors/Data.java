@@ -14,7 +14,9 @@ public class Data {
 	Data next;
 	int imageCtr;
 	HashMap<String, Integer> buttonPixmapNode = new HashMap<String, Integer>();
+	
 	int CorrectXCoorLeft,CorrectXCoorRight, CorrectYCoorTop,CorrectYCoorBottom;
+	int numbers[] = new int[2];
 	
 	float CurrentY;
 	boolean toMove;
@@ -34,7 +36,7 @@ class PixmapList{
 		tail = null;
 	}
 
-	public void add(HashMap<String,Integer> imgTiles,int coor[][], int CurrentY, boolean lock) {
+	public void add(HashMap<String,Integer> imgTiles,int coor[][], int CurrentY, boolean lock, int tileScore[]) {
 		Data temp = new Data();
 		
 		if (size == 0) {
@@ -42,6 +44,7 @@ class PixmapList{
 			tail = temp;
 			head.CurrentY = CurrentY;
 			head.toMove = lock;
+			head.numbers=tileScore;
 			head.buttonPixmapNode = imgTiles;
 			holdInfo=head;
 			tail.next = null;
@@ -49,6 +52,7 @@ class PixmapList{
 			tail.next = temp;
 			tail = temp;
 			tail.next = null;
+			tail.numbers = tileScore;
 			tail.CurrentY = CurrentY;
 			tail.buttonPixmapNode = imgTiles;
 			head.toMove = lock;

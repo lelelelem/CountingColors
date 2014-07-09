@@ -11,13 +11,9 @@ public enum Bounds {
 	yBoundsTop(1640),
 	yBoundsBottom(1852),
 	xBounds1stLeft(0),
-	xBounds1stRight(280),
 	xBounds2ndLeft(268),
-	xBounds2ndRight(775),
 	xBounds3rdLeft(536),
-	xBounds3rdRight(1265),
-	xBounds4thLeft(804),
-	xBounds4thRight(1760);
+	xBounds4thLeft(804);
 	
 	private final int coordinate;
 	
