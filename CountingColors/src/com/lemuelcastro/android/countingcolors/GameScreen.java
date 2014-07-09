@@ -23,7 +23,7 @@ class GameScreen extends Screen {
 	private ArrayList<Integer> mArrayListy = new ArrayList<Integer>();
 
 	private static final int TILE_SPACING = 405;
-	private static final int FRAMES_PER_S = 1;
+	private static final int FRAMES_PER_S = 5;
 
 	public static final int INITIAL_SPACE = 20;
 
@@ -44,7 +44,7 @@ class GameScreen extends Screen {
 	public GameScreen(Game game, ActionResolverAndroid aResolverAndroid) {
 		super(game);
 		count = 1;
-		mBottom = 1600;
+		mBottom = 1520;
 		canTouch = true;
 		mPixmaps = new PixmapList();
 
@@ -70,7 +70,7 @@ class GameScreen extends Screen {
 				if (canTouch
 						&& (new methods().inBounds(forTouch,
 								mArrayListx.get(currindex),
-								mArrayListy.get(currindex), 245, 220))) {
+								(int)mPixmaps.head.CurrentY, 245, 400))) {
 					Log.i(TAG, "SWWET" + mArrayListx.get(currindex) + " touche"
 							+ forTouch.x);
 					mArrayListx.remove(0);
@@ -80,7 +80,7 @@ class GameScreen extends Screen {
 					addNode(addhere);
 					mPixmaps.first = true;
 					lock = false;
-					canTouch = false;
+					
 
 					/*
 					 * mPixmaps.delete(); mBottom = 1900; currindex++; toTouch =
@@ -132,8 +132,8 @@ class GameScreen extends Screen {
 		for (int i = 0; i < 6; i++) {
 
 			// used to not redraw while non correct button is not pressed
-			// if (lock)
-			// break;
+			 if (lock)
+				 break;
 
 			Data data = mPixmaps.getInfo();
 
@@ -149,31 +149,55 @@ class GameScreen extends Screen {
 			if (i == 5 && mPixmaps.head.CurrentY >= mBottom && first) {
 				lock = true;
 				canTouch = true;
-
-				mPixmaps.delete();
-				addNode(addhere);
 				Log.i(TAG, "mice fault" + i);
 			}
 
-			Log.i(TAG, "x " + data.CorrectXCoorLeft + " y "
-					+ data.CorrectYCoorTop + " i " + i + " count" + count
-					+ " CurrY " + CurrY);
+		
 
 			// needed only on animation and if lock is turned off
 			CurrY = data.CurrentY += FRAMES_PER_S * deltaTime;
-
+			CurrY-=9;
 			// adds tiles to row buttons
 
-			if (tempData != null && tempData.CurrentY != -400) {
-				for (int j = 0, x = 0; j < 4; j++, x += Assets.bodies[tempData.buttonPixmapNode
-						.get(Integer.toString(j))].getWidth()) {
-					tempData.CurrentY -= 50;
-					graphics.drawPixmap(Assets.bodies[tempData.buttonPixmapNode
-							.get(Integer.toString(j))], x,
-							(int) tempData.CurrentY - 50);
+			if (tempData != null && tempData.CurrentY != -5000) {
+				Log.i(TAG, "whatthe " +tempData.CurrentY);
+				for (int j = 0, x = 0; j < 4; j++, x += 270, tempData.CurrentY-=10) {
+					if (tempData.buttonPixmapNode.get(Integer.toString(j)) == 0) {
 
-					if (j + 1 == 4)
-						break;
+						Pixmap pix = actionResolver.obtainPixmap("Colored");
+						
+						if (pix == null) {
+							Log.i(TAG,"not from cache");
+							pix = graphics.newPixmap("HasNumber.png",
+									PixmapFormat.RGB565);
+							actionResolver.placeTo("Colored", pix);
+						}
+
+						graphics.drawPixmap(pix, x, (int) CurrY);
+						if (tempData.buttonPixmapNode.get(Integer.toString(j)) == 0) {
+							
+						}
+
+					}
+					
+					else{
+
+						Pixmap pix = actionResolver.obtainPixmap("NotColored");
+						
+						if (pix == null) {
+							
+							pix = graphics.newPixmap("HasNoNumber.png",
+									PixmapFormat.RGB565);
+							actionResolver.placeTo("NotColored", pix);
+						}
+
+						graphics.drawPixmap(pix, x, (int) CurrY);
+						if (data.buttonPixmapNode.get(Integer.toString(j)) == 0) {
+							
+						}
+						
+					}
+
 				}
 			}
 			// adds tiles to row buttons
@@ -215,8 +239,6 @@ class GameScreen extends Screen {
 					
 				}
 
-				if (j + 1 == 4)
-					break;
 			}
 
 			if (i == 5) {
@@ -255,19 +277,18 @@ class GameScreen extends Screen {
 				hashMap.put(Integer.toString(i), 0);
 				PlaceValue(i, 0);
 				mArrayListx.add(correctCoor[0][0]);
-				Log.i(TAG, "Placed! " + arrayList.get(index));
+				Log.i(TAG, "ehemPlaced! " + arrayList.get(index));
 			} else {
 				if (odds == 1 && arrayList.get(index) == 1) {
 					hashMap.put(Integer.toString(i), 0);
 					PlaceValue(i, 1);
 					mArrayList2x.add(correctCoor[1][0]);
-					Log.i(TAG, "Odds!! " + arrayList.get(index));
+					Log.i(TAG, "ehemOdds!! " + arrayList.get(index));
 				}
 
 				else {
 					hashMap.put(Integer.toString(i), 1);
-					PlaceValue(i, 1);
-					Log.i(TAG, "Meh! " + arrayList.get(index));
+					Log.i(TAG, "ehemMeh! " + arrayList.get(index));
 				}
 			}
 
@@ -281,6 +302,7 @@ class GameScreen extends Screen {
 
 	private void PlaceValue(int i, int row) {
 		if (i == 0) {
+			
 			correctCoor[row][0] = Bounds.xBounds1stLeft.getCoor();
 		} else if (i == 1) {
 
@@ -292,7 +314,7 @@ class GameScreen extends Screen {
 
 			correctCoor[row][0] = Bounds.xBounds4thLeft.getCoor();
 		}
-
+		Log.i(TAG,"ehem"+i);
 	}
 
 	@Override
