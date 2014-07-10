@@ -17,73 +17,96 @@ import com.badlogic.androidgames.framework.Screen;
 
 class GameScreen extends Screen {
 
-	ActionResolverAndroid actionResolver;
+	private ActionResolverAndroid actionResolver;
 	private ArrayList<Integer> mArrayListx = new ArrayList<Integer>();
 	private ArrayList<Integer> mArrayList2x = new ArrayList<Integer>();
 	private ArrayList<Integer> mArrayListy = new ArrayList<Integer>();
+	
+	private ArrayList<Integer> mScoreListx = new ArrayList<Integer>();
+	private ArrayList<Integer> mScoreList2x = new ArrayList<Integer>();
 
+	private Graphics graphics;
+	
 	private static final int TILE_SPACING = 405;
-	private static final int FRAMES_PER_S = 2;
-
-	private int arrayNumbers[];
+	private static final int FRAMES_PER_S = 5;
+	private static final float TICKER = 0.5f;
+	
+	private float ticker;
 	
 	public static final int INITIAL_SPACE = 20;
 
 	private Data tempData;
 
+	private int score;
+	
+	private int points[];
 	private boolean lock, first, canTouch;
 
 	private static final String TAG = "Whoa";
 
-	private int correctCoor[][] = new int[2][2];
-
-	private int currindex = 0;
+	private int correctCoor[][];
+	private int arrayNumbers[];
+	
+	private int currindex;
 	private int mBottom, addhere;
 	private PixmapList mPixmaps;
 
 	public GameScreen(Game game, ActionResolverAndroid aResolverAndroid) {
 		
 		super(game);
-		Graphics graphics = game.getGraphics();
+		ticker =0;
+		graphics = game.getGraphics();
+		
+		score=0;
+		correctCoor = new int[2][2];
+		currindex=0;
 		
 		graphics.clear(Color.BLACK);
 		mBottom = 1500;
 		canTouch = true;
 		mPixmaps = new PixmapList();
 
+		
 		actionResolver= aResolverAndroid;
+
 	}
 
 	@Override
 	public void update(float deltaTime) {
-
+		
 		List<TouchEvent> touches = game.getInput().getTouchEvents();
 
 		game.getInput().getKeyEvents();
 
 		for (int i = 0; i < touches.size(); i++) {
 			TouchEvent forTouch = touches.get(i);
-			Log.i(TAG, "SWWET" + mArrayList2x.get(0) + " touche"
-					+ forTouch.x);
+			
 			if (forTouch.type == TouchEvent.TOUCH_UP) {
 				if (canTouch
 						&& ((new methods().inBounds(forTouch,
 								mArrayListx.get(currindex),
-								(int)mPixmaps.head.CurrentY, 245, 400))||((new methods().inBounds(forTouch,
+								(int)mPixmaps.head.CurrentY-50, 245, 550)))) {
+					score +=mScoreListx.get(currindex);
+					ticker = 0;
+					setUpNewNode();	
+				}
+				
+				else if (canTouch
+						&& ((new methods().inBounds(forTouch,
 										mArrayList2x.get(currindex),
-										(int)mPixmaps.head.CurrentY, 245, 400))))) {
-					
-					Graphics graphics = game.getGraphics();
-					
-					graphics.clear(Color.BLACK);
-					mArrayListx.remove(0);
-					mArrayList2x.remove(0);
-					mArrayListy.remove(0);
-					tempData = mPixmaps.head;
-					mPixmaps.delete();
-					addNode(addhere);
-					mPixmaps.first = true;
-					lock = false;
+										(int)mPixmaps.head.CurrentY-50, 245, 550)))){
+					score +=mScoreList2x.get(currindex);
+					ticker=0;
+					setUpNewNode();
+				}
+				else{
+					try {
+						actionResolver.saveScore(score);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					actionResolver.showGameOver(score);
 				}
 
 			}
@@ -92,6 +115,21 @@ class GameScreen extends Screen {
 
 	}
 
+	
+	private void setUpNewNode(){
+		graphics.clear(Color.BLACK);
+		mArrayListx.remove(0);
+		mArrayList2x.remove(0);
+		mScoreListx.remove(0);
+		mScoreList2x.remove(0);
+		mArrayListy.remove(0);
+		tempData = mPixmaps.head;
+		mPixmaps.delete();
+		addNode(addhere);
+		mPixmaps.first = true;
+		lock = false;
+	}
+	
 	private void addNode(float CurrY) {
 
 		// create new button order
@@ -113,9 +151,22 @@ class GameScreen extends Screen {
 	@Override
 	public void present(float deltaTime) {
 
-		Log.i(TAG, deltaTime + "fps");
-
-		Graphics graphics = game.getGraphics();
+		
+		ticker +=TICKER;
+		
+		if(ticker>=20){
+		
+			
+			try {
+				actionResolver.saveScore(score);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+			
+				e.printStackTrace();
+			}
+			actionResolver.showGameOver(score);
+		}
+		
 		float CurrY = mBottom;
 
 		// if no Instance is created yet
@@ -133,10 +184,14 @@ class GameScreen extends Screen {
 			
 			int arrayCtr=0;
 
+			points = new int[mPixmaps.head.numbers.length];
+			
+			
+			
 			// used to not redraw while non correct button is not pressed
 			 if (lock)
 				 break;
-
+			 
 			Data data = mPixmaps.getInfo();
 
 			if (data == null) {
@@ -146,6 +201,10 @@ class GameScreen extends Screen {
 			//for debug only since on real game once
 			//tiles reaches button its gameover
 			if (i == 5 && mPixmaps.head.CurrentY >= mBottom && first) {
+				for(int x=0; x<points.length;x++){
+					points[x] = mPixmaps.head.numbers[x];
+					Log.i(TAG, "Points is"+points[x]);
+				}
 				lock = true;
 				canTouch = true;
 				Log.i(TAG, "mice fault" + i);
@@ -212,8 +271,9 @@ class GameScreen extends Screen {
 			}
 
 			Log.i(TAG, "last i is drawn" + i);
-
+			Log.i(TAG, "SWWET" + mScoreListx.get(0));
 		}
+		drawScore();
 	
 	}
 
@@ -242,7 +302,7 @@ class GameScreen extends Screen {
 				mArrayListx.add(correctCoor[0][0]);
 				if(odds!=1)
 					mArrayList2x.add(9999);
-				PlaceTileScore(0);
+				PlaceTileScore(0,odds);
 				
 				Log.i(TAG, "ehemPlaced! " + arrayList.get(index));
 			} else {
@@ -252,7 +312,7 @@ class GameScreen extends Screen {
 					mArrayList2x.add(correctCoor[1][0]);
 					Log.i(TAG, "ehemOdds!! " + i);
 					
-					PlaceTileScore(1);
+					PlaceTileScore(1,odds);
 				}
 
 				else {
@@ -285,7 +345,7 @@ class GameScreen extends Screen {
 		Log.i(TAG,"ehem"+i);
 	}
 	
-	private void PlaceTileScore(int row){
+	private void PlaceTileScore(int row,int odds){
 		arrayNumbers[row] = new Random().nextInt(4);
 		
 		if(arrayNumbers[row]==0){
@@ -300,8 +360,44 @@ class GameScreen extends Screen {
 		if(arrayNumbers[row]==3){
 			arrayNumbers[0] = Bounds.xBounds4thLeft.getCoor();
 		}
+		
+		
+		if (row==0){
+			mScoreListx.add(arrayNumbers[row]!=0?(arrayNumbers[row]/268)+1:1);
+			if (odds!=1){
+				mScoreList2x.add(0);
+			}
+		}
+		else{
+			mScoreList2x.add(arrayNumbers[row]!=0?(arrayNumbers[row]/268)+1/268:1);
+		}
+		
 	}
 
+	
+	private void drawScore(){
+		
+		String stScore = Integer.toString(score);
+		
+		char stScoreArr[] = stScore.toCharArray();
+		
+
+		Pixmap pix = actionResolver.obtainPixmap("score");
+		
+		if (pix == null) {
+			Log.i(TAG,"not from cache");
+			pix = graphics.newPixmap("numbersscore.png",
+					PixmapFormat.RGB565);
+			actionResolver.placeTo("score", pix);
+		}
+
+		for (int i=0,x=540;i<stScoreArr.length;i++,x+=33){
+			int row =  Integer.parseInt(Character.toString(stScoreArr[i]))<=4?0:42;
+			Log.i(TAG,"yay"+row+"sc"+score);
+			graphics.drawPixmap(pix, x, 10, (Integer.parseInt(Character.toString(stScoreArr[i]))%5)*32, row, 32, 42);
+		}	
+	}
+	
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
@@ -316,8 +412,7 @@ class GameScreen extends Screen {
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 }

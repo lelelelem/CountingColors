@@ -25,6 +25,9 @@
          <activity
             android:name="com.lemuelcastro.android.countingcolors.ListActivity"
             android:label="@string/app_name" />
+         <activity
+            android:name="com.lemuelcastro.android.countingcolors.GameOver"
+            android:label="@string/app_name" />
     </application>
 
 </manifest>

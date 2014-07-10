@@ -11,6 +11,8 @@ import android.view.WindowManager;
 public abstract class SingleFragmentActivity extends FragmentActivity {
 
 	protected abstract Fragment setupFragment();
+	protected abstract int setupMain();
+	
 	
 	@SuppressLint("NewApi")
 	@Override
@@ -22,7 +24,7 @@ public abstract class SingleFragmentActivity extends FragmentActivity {
 		
 		
 		super.onCreate(arg0);
-		setContentView(R.layout.activity_main);
+		setContentView(setupMain());
 		
 		FragmentManager fm=getSupportFragmentManager();
 		Fragment fragment=fm.findFragmentById(R.id.main);

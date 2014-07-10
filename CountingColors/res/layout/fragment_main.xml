@@ -9,7 +9,28 @@
     tools:context="com.lemuelcastro.android.countingcolors.MainActivity$PlaceholderFragment" >
 
     <TextView
+        android:id="@+id/header"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="21dp"
+        android:gravity="center"
+        android:paddingBottom="40dp"
+        android:paddingTop="40dp"
+        android:text="@string/scores"
+        android:textColor="@color/Red"
+        android:textSize="26sp" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/header"
+        android:layout_alignBottom="@+id/header"
+        android:layout_marginLeft="36dp"
+        android:layout_toRightOf="@+id/header"
+        android:text="TextView"
+        android:textSize="24sp" />
 
 </RelativeLayout>

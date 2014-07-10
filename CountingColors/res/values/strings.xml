@@ -3,6 +3,11 @@
 
     <string name="app_name">CountingColors</string>
     <string name="scores">SCORES</string>
+    <string name="score">Score : </string>
+    <string name="g_over">GAME OVER!</string>
+    <string name="b_menu">Back to Menu!</string>
+    
+    <string name="high">HighScore : </string>
     <string name="action_settings">Settings</string>
 
 </resources>

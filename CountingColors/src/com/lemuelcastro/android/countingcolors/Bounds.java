@@ -13,7 +13,15 @@ public enum Bounds {
 	xBounds1stLeft(0),
 	xBounds2ndLeft(268),
 	xBounds3rdLeft(536),
-	xBounds4thLeft(804);
+	xBounds4thLeft(804),
+	score1st(0),
+	score2nd(31),
+	score3rd(62),
+	score4th(93),
+	score5th(124),
+	scoreTop(0),
+	scoreBottom(42);
+	
 	
 	private final int coordinate;
 	
