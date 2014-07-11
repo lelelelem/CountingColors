@@ -38,16 +38,7 @@ public class ListFragment extends android.support.v4.app.ListFragment {
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		ModelClass modelClass = ((ForListAdapter) getListAdapter())
-				.getItem(position);
-
-		// possible needed we never know
-
-		// Intent intent = new Intent(getActivity(), ShowActivity.class);
-
-		// intent.putExtra(ShowFragment.MODEL_CLASS, modelClass);
-		// startActivity(intent);
-
+		
 	}
 
 	@Override
@@ -71,18 +62,16 @@ public class ListFragment extends android.support.v4.app.ListFragment {
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			
-			if (convertView==null) { convertView =
-			 getActivity().getLayoutInflater().inflate( 
-			  R.layout.fragment_main_odd, null); }
-			
-			
+
+			if (convertView == null) {
+				convertView = getActivity().getLayoutInflater().inflate(
+						R.layout.fragment_main_odd, null);
+			}
+
 			ModelClass c = getItem(position);
-			mScore = (TextView)convertView.findViewById(R.id.score);
+			mScore = (TextView) convertView.findViewById(R.id.score);
 			mScore.setText(c.getScore());
-			
-			 
-			
+
 			return convertView;
 		}
 	}

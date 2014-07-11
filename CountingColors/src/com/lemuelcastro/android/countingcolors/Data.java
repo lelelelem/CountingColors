@@ -2,90 +2,75 @@ package com.lemuelcastro.android.countingcolors;
 
 import java.util.HashMap;
 
-import android.util.Log;
-
-import com.badlogic.androidgames.framework.Pixmap;
-
 //Representation of Tiles
 
-
 public class Data {
-	
+
 	Data next;
-	int imageCtr;
-	int headCtr;
+	boolean isHead;
 	HashMap<String, Integer> buttonPixmapNode = new HashMap<String, Integer>();
-	
-	int CorrectXCoorLeft,CorrectXCoorRight, CorrectYCoorTop,CorrectYCoorBottom;
 	int numbers[] = new int[2];
-	
+
 	float CurrentY;
 	boolean toMove;
 }
 
-class PixmapList{
-	
-	String Tag = "DATANODE";
-	Data head, tail,holdInfo;
+class PixmapList {
+
+	Data head, tail, holdInfo,temp;
 	int size = 0;
-	boolean first=true;
-	
-	public static final String TAG="Datanode";
+	boolean first = true;
 
 	PixmapList() {
 		head = null;
 		tail = null;
 	}
 
-	public void add(HashMap<String,Integer> imgTiles,int coor[][], int CurrentY, boolean lock, int tileScore[]) {
-		Data temp = new Data();
+	public void add(HashMap<String, Integer> imgTiles, int coor[][],
+			int CurrentY, boolean lock, int tileScore[]) {
 		
+		temp = new Data();
+
 		if (size == 0) {
 			head = temp;
 			tail = temp;
 			head.CurrentY = CurrentY;
 			head.toMove = lock;
-			head.headCtr=1;
-			head.numbers=tileScore;
+			head.isHead = true;
+			head.numbers = tileScore;
 			head.buttonPixmapNode = imgTiles;
-			holdInfo=head;
+			holdInfo = head;
 			tail.next = null;
 		} else {
 			tail.next = temp;
 			tail = temp;
 			tail.next = null;
+			head.isHead = false;
 			tail.numbers = tileScore;
-			tail.headCtr=0;
 			tail.CurrentY = CurrentY;
 			tail.buttonPixmapNode = imgTiles;
 			head.toMove = lock;
 		}
 		size++;
 	}
-	
-	public void delete(){
+
+	public void delete() {
 		head = head.next;
 	}
 
 	public Data getInfo() {
-		Data temp;
-		
-		if(size==0||holdInfo==null&&!first){
-			Log.i(TAG, "NULL ALREADY");
-			holdInfo=head;
+
+		if (size == 0 || holdInfo == null && !first) {
+			holdInfo = head;
 			return null;
 		}
-		
-		if (first){
-			Log.i(TAG, "FIRST TIME");
-			holdInfo=head;
-			first=false;
+
+		if (first) {
+			holdInfo = head;
+			first = false;
 		}
-		
-		temp=holdInfo;
-		
-		holdInfo=holdInfo.next;
-		
+		temp = holdInfo;
+		holdInfo = holdInfo.next;
 		return temp;
 	}
 }

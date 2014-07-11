@@ -2,7 +2,6 @@ package com.lemuelcastro.android.countingcolors;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.TreeSet;
 import java.util.UUID;
 
 import org.json.JSONException;

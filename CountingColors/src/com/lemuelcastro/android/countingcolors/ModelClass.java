@@ -5,15 +5,11 @@ import java.util.UUID;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
 
 @SuppressWarnings("serial")
 public class ModelClass implements Serializable {
 	
-	private final String TAG="MODELCLASS";
-	
-	private final String JSON_UID="id",  JSON_SCORE="score",JSON_ID_NAME="name";
+	private final String JSON_UID="id",  JSON_SCORE="score";
 	
 	private String mScore,mHId;
 	
@@ -30,14 +26,10 @@ public class ModelClass implements Serializable {
 	public ModelClass(JSONObject jsonObject) throws JSONException{
 		
 		
-		Log.i(TAG, "JSON LENGTH "+jsonObject.length());
-		Log.i(TAG, "JSON VALUE "+jsonObject.toString());
-		
 	
 		mScore = jsonObject.getString(JSON_SCORE);
 		mHId = jsonObject.getString(JSON_UID);
-		
-		Log.i(TAG, "ID ADDED! "+jsonObject.getString(JSON_UID));
+	
 		
 	}
 	

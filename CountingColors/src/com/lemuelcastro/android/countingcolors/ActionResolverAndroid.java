@@ -3,55 +3,35 @@ package com.lemuelcastro.android.countingcolors;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Handler;
 import android.support.v4.util.LruCache;
-import android.widget.Toast;
 
 import com.badlogic.androidgames.framework.Pixmap;
 
-public class ActionResolverAndroid implements ActionResolver {
-	private Handler uiThread = new Handler();
-	private Context appContext;
+public class ActionResolverAndroid {
+	
+	private Context mAppContext;
 	private LruCache<String, Pixmap> mMemoryCache;
 	private ModelClass mClass;
 
 	public ActionResolverAndroid(Context appContext) {
 
-		uiThread = new Handler();
-		this.appContext = appContext;
+		
+		this.mAppContext = appContext;
 		setupCache();
 	}
 
-	@Override
 	public void showMyList() {
-		appContext.startActivity(new Intent(appContext, ListActivity.class));
+		mAppContext.startActivity(new Intent(mAppContext, ListActivity.class));
 	}
 
 	public void showGameOver(int score) {
-		Intent i =new Intent(appContext, GameOver.class);
-		
-		
-		appContext.startActivity(i);
-	}
-
-	@Override
-	public void showToast() {
-
-		uiThread.post(new Runnable() {
-
-			@Override
-			public void run() {
-
-				Toast.makeText(appContext, "memememe", Toast.LENGTH_SHORT)
-						.show();
-			}
-		});
+		Intent i = new Intent(mAppContext, GameOver.class);
+		mAppContext.startActivity(i);
 	}
 
 	public void setupCache() {
 
-		ActivityManager am = (ActivityManager) appContext
+		ActivityManager am = (ActivityManager) mAppContext
 				.getSystemService(Context.ACTIVITY_SERVICE);
 		int memClassBytes = am.getMemoryClass() * 1024 * 1024;
 		int cacheSize = memClassBytes / 8;
@@ -80,9 +60,9 @@ public class ActionResolverAndroid implements ActionResolver {
 	public void saveScore(int score) throws Exception {
 		mClass = new ModelClass();
 		mClass.setScore(Integer.toString(score));
-		
-		ModelSingleton.get(appContext).addDetails(mClass);
-		ModelSingleton.get(appContext).saveDetails();
+
+		ModelSingleton.get(mAppContext).addDetails(mClass);
+		ModelSingleton.get(mAppContext).saveDetails();
 	}
 
 }

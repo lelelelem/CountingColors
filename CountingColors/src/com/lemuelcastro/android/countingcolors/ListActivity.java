@@ -2,7 +2,7 @@ package com.lemuelcastro.android.countingcolors;
 
 import android.support.v4.app.Fragment;
 
-public class ListActivity extends SingleFragmentActivity{
+public class ListActivity extends SingleFragmentActivity {
 
 	@Override
 	protected Fragment setupFragment() {
@@ -11,7 +11,6 @@ public class ListActivity extends SingleFragmentActivity{
 
 	@Override
 	protected int setupMain() {
-		// TODO Auto-generated method stub
 		return R.layout.activity_main_list;
 	}
 

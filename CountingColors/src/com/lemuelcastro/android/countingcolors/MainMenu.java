@@ -6,14 +6,12 @@ package com.lemuelcastro.android.countingcolors;
 
 import java.util.List;
 
-import android.support.v4.util.LruCache;
 import android.util.Log;
 
 import com.badlogic.androidgames.framework.Game;
 import com.badlogic.androidgames.framework.Graphics;
 import com.badlogic.androidgames.framework.Graphics.PixmapFormat;
 import com.badlogic.androidgames.framework.Input.TouchEvent;
-import com.badlogic.androidgames.framework.Pixmap;
 import com.badlogic.androidgames.framework.Screen;
 
 public class MainMenu extends Screen {

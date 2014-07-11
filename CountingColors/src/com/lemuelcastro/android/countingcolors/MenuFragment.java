@@ -19,8 +19,8 @@ public class MenuFragment extends Fragment {
 			Intent i;
 			switch (v.getId()) {
 			case R.id.ngame:
-					 i = new Intent(getActivity(), MainActivity.class);
-					startActivity(i);
+				i = new Intent(getActivity(), MainActivity.class);
+				startActivity(i);
 				break;
 			case R.id.hscore:
 				i = new Intent(getActivity(), ListActivity.class);
@@ -32,7 +32,6 @@ public class MenuFragment extends Fragment {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 	}
 
@@ -41,13 +40,12 @@ public class MenuFragment extends Fragment {
 			Bundle savedInstanceState) {
 
 		View v = inflater.inflate(R.layout.mmenu, container, false);
-		mScore = (Button)v.findViewById(R.id.ngame);
-		mNew = (Button)v.findViewById(R.id.hscore);
-		
+		mScore = (Button) v.findViewById(R.id.ngame);
+		mNew = (Button) v.findViewById(R.id.hscore);
+
 		mScore.setOnClickListener(mClickListener);
 		mNew.setOnClickListener(mClickListener);
-		
-		
+
 		return v;
 	}
 
