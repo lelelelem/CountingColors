@@ -13,6 +13,7 @@ public class Data {
 	
 	Data next;
 	int imageCtr;
+	int headCtr;
 	HashMap<String, Integer> buttonPixmapNode = new HashMap<String, Integer>();
 	
 	int CorrectXCoorLeft,CorrectXCoorRight, CorrectYCoorTop,CorrectYCoorBottom;
@@ -44,6 +45,7 @@ class PixmapList{
 			tail = temp;
 			head.CurrentY = CurrentY;
 			head.toMove = lock;
+			head.headCtr=1;
 			head.numbers=tileScore;
 			head.buttonPixmapNode = imgTiles;
 			holdInfo=head;
@@ -53,6 +55,7 @@ class PixmapList{
 			tail = temp;
 			tail.next = null;
 			tail.numbers = tileScore;
+			tail.headCtr=0;
 			tail.CurrentY = CurrentY;
 			tail.buttonPixmapNode = imgTiles;
 			head.toMove = lock;

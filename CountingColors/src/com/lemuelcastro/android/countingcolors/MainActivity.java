@@ -14,7 +14,7 @@ public class MainActivity extends AndroidGame {
 	@Override
 	public Screen getStartScreen() {
 		mActionResolverAndroid = new ActionResolverAndroid(this);
-		return new MainMenu(this, mActionResolverAndroid);
+		return new GameScreen(this, mActionResolverAndroid);
 	}
 	
 	public void yoh(){

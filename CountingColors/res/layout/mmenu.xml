@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ColorLem" >
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="88dp"
+        android:text="COLORS"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White"
+        android:textSize="52sp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TextView01"
+        android:layout_centerHorizontal="true"
+        android:text="COUNTING"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White"
+        android:textSize="52sp" />
+
+    <Button
+        android:id="@+id/hscore"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ngame"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/background"
+        android:text="scores"
+        android:textColor="@color/White"
+        android:textSize="50sp" />
+
+    <Button
+        android:id="@+id/ngame"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/background_white_r_pressed"
+        android:padding="10dp"
+        android:text="new"
+        android:textColor="@color/White"
+        android:textSize="50sp" />
+
+</RelativeLayout>

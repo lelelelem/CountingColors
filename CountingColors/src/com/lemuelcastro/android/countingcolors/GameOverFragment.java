@@ -23,8 +23,8 @@ public class GameOverFragment extends Fragment{
 	private View.OnClickListener mClickListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			if (v.getId()==R.id.button1){
-				Intent i = new Intent(getActivity(),MainActivity.class);
+			if (v.getId()==R.id.ngame){
+				Intent i = new Intent(getActivity(),Menu.class);
 				startActivity(i);
 			}
 		}
@@ -56,7 +56,7 @@ public class GameOverFragment extends Fragment{
 		mHigh.setText(mModelClass.get(mModelClass.size()-1).getScore());
 		
 		
-		mButton= (Button)v.findViewById(R.id.button1);
+		mButton= (Button)v.findViewById(R.id.ngame);
 		
 		mButton.setOnClickListener(mClickListener);
 		

@@ -72,9 +72,10 @@ public class ListFragment extends android.support.v4.app.ListFragment {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			
-			if (convertView == null) { convertView =
+			if (convertView==null) { convertView =
 			 getActivity().getLayoutInflater().inflate( 
-			  R.layout.fragment_main, null); } 
+			  R.layout.fragment_main_odd, null); }
+			
 			
 			ModelClass c = getItem(position);
 			mScore = (TextView)convertView.findViewById(R.id.score);

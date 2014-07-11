@@ -3,24 +3,32 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/White"
+    android:background="@color/ColorLem"
     android:orientation="vertical" >
-    
-<TextView
+
+    <TextView
         android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:background="@color/ColorLem"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:shadowColor="@color/black"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="2"
+        android:text="@string/scores"
+        android:textAppearance="?android:attr/textAppearanceSmallInverse"
+        android:textColor="@color/white"
+        android:textSize="90sp" />
+
+    <FrameLayout
+        android:id="@+id/list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal"
-        android:paddingTop="40dp"
-        android:paddingBottom="40dp"
-        android:text="@string/scores"
-        android:textColor="@color/Red"
-        android:textSize="54sp" />
- 
- <FrameLayout 
-     android:id="@+id/list"
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"/>
+        android:background="@color/DarkRed" />
 
 </LinearLayout>
