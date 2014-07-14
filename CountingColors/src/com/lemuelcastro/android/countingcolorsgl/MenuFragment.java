@@ -1,7 +1,5 @@
 package com.lemuelcastro.android.countingcolorsgl;
 
-import com.lemuelcastro.android.countingcolors.R;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +8,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.lemuelcastro.android.countingcolors.R;
 
 public class MenuFragment extends Fragment {
 
@@ -49,6 +49,11 @@ public class MenuFragment extends Fragment {
 		mNew.setOnClickListener(mClickListener);
 
 		return v;
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
 	}
 
 }

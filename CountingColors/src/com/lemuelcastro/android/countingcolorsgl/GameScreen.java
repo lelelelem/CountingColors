@@ -144,7 +144,7 @@ public class GameScreen extends GLScreen {
 				if (((new methods().inBounds(forTouch,
 						mArrayListx.get(mCurrindex), (int) temp.CurrentY - 205,
 						245, 550)))) {
-
+					mScore += mScoreListx.get(mCurrindex);
 					first = false;
 					setUpNewNode();
 				}
