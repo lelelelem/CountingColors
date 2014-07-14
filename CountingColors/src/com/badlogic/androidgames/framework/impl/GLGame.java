@@ -116,7 +116,7 @@ public abstract class GLGame extends Activity implements Game, Renderer {
 				}
 			}
 		}
-		wakeLock.release();
+		//wakeLock.release();
 		glView.onPause();
 		super.onPause();
 	}

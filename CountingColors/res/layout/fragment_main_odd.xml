@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
-    tools:context="com.lemuelcastro.android.countingcolors.MainActivity$PlaceholderFragment" >
+    tools:context="com.lemuelcastro.android.countingcolorsgl.MainActivity$PlaceholderFragment" >
 
     <TextView
         android:id="@+id/score"

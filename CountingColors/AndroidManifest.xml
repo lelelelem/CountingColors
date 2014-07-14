@@ -14,22 +14,21 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.lemuelcastro.android.countingcolors.Menu"
+            android:name="com.lemuelcastro.android.countingcolorsgl.Menu"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
          <activity
-            android:name="com.lemuelcastro.android.countingcolors.ListActivity"
+            android:name="com.lemuelcastro.android.countingcolorsgl.ListActivity"
             android:label="@string/app_name" />
          <activity
-            android:name="com.lemuelcastro.android.countingcolors.GameOver"
+            android:name="com.lemuelcastro.android.countingcolorsgl.GameOver"
             android:label="@string/app_name" />
           <activity
-            android:name="com.lemuelcastro.android.countingcolors.MainActivity"
+            android:name="com.lemuelcastro.android.countingcolorsgl.MainActivityGL"
             android:label="@string/app_name" />
     </application>
 
