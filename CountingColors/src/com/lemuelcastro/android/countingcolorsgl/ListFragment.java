@@ -16,10 +16,6 @@ public class ListFragment extends android.support.v4.app.ListFragment {
 
 	private ArrayList<ModelClass> mModelClass;
 
-	public static final String MODEL_CLASS = "model";
-
-	private TextView mScore;
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -56,15 +52,16 @@ public class ListFragment extends android.support.v4.app.ListFragment {
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-
+			TextView scoreTextView;
+			
 			if (convertView == null) {
 				convertView = getActivity().getLayoutInflater().inflate(
 						R.layout.fragment_main_odd, null);
 			}
 
 			ModelClass c = getItem(position);
-			mScore = (TextView) convertView.findViewById(R.id.score);
-			mScore.setText(c.getScore());
+			scoreTextView = (TextView) convertView.findViewById(R.id.score);
+			scoreTextView.setText(c.getScore());
 
 			return convertView;
 		}
