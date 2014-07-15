@@ -3,24 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
-    android:background="@color/Coral"
+    android:background="@color/DarkCyan"
     android:gravity="center"
     android:orientation="vertical" >
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:orientation="vertical" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            style="@style/shadow"
             android:gravity="center_horizontal"
             android:text="@string/g_over"
-            android:textColor="@color/Blue"
+            android:textColor="@color/White"
             android:textSize="80sp" />
 
         <LinearLayout
@@ -29,14 +23,16 @@
             android:orientation="horizontal" >
 
             <TextView
+                style="@style/shadow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:text="@string/score"
-                android:textColor="@color/Red"
+                android:textColor="@color/White"
                 android:textSize="54sp" />
 
             <TextView
+                style="@style/shadow"
                 android:id="@+id/score"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -48,12 +44,24 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/ngame"
+         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        <Button
+            android:id="@+id/ngame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/press"
             android:text="@string/b_menu" />
-
-    </LinearLayout>
+        
+        <Button
+            android:id="@+id/nG"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="14dp"
+            style="@style/press"
+            android:text="New Game" />
+	</LinearLayout>
 
 </LinearLayout>

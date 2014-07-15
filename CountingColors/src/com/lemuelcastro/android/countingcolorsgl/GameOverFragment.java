@@ -1,9 +1,5 @@
 package com.lemuelcastro.android.countingcolorsgl;
 
-import java.util.ArrayList;
-
-import com.lemuelcastro.android.countingcolors.R;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,30 +10,37 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.lemuelcastro.android.countingcolors.R;
+
 public class GameOverFragment extends Fragment {
 
-	private ArrayList<ModelClass> mModelClass;
+	public static final String SCORE = "score";
+	
 	private TextView mScore;
-	private Button mButton;
+	private Button mButton, mNewGame;
 
 	private View.OnClickListener mClickListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			if (v.getId() == R.id.ngame) {
-				Intent i = new Intent(getActivity(), Menu.class);
-				startActivity(i);
+			Intent i = null;
+			switch(v.getId()){
+			case R.id.ngame:
+				i = new Intent(getActivity(), Menu.class);
+				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				break;
+			case R.id.nG:
+				i = new Intent(getActivity(), MainActivityGL.class);
+				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				break;
 			}
+			startActivity(i);
 		}
 	};
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		try {
-			mModelClass = ModelSingleton.get(getActivity()).getDetails();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	
 	}
 
 	@Override
@@ -47,13 +50,25 @@ public class GameOverFragment extends Fragment {
 
 		mScore = (TextView) v.findViewById(R.id.score);
 
-		mScore.setText(mModelClass.get(mModelClass.size() - 1).getScore());
+		mScore.setText(Integer.toString(getActivity().getIntent().getIntExtra(SCORE,0)));
 
 		mButton = (Button) v.findViewById(R.id.ngame);
 
 		mButton.setOnClickListener(mClickListener);
+		
+		mNewGame = (Button)v.findViewById(R.id.nG);
+		mNewGame.setOnClickListener(mClickListener);
+		
+		new FragmentListener() {
+			@Override
+			public void onBackButtonPressed() {
+			//left blank parent holds method
+			}
+		};
 
 		return v;
 	}
+	
+	
 
 }

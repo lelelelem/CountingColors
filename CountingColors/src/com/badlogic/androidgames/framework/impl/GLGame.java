@@ -3,11 +3,11 @@ package com.badlogic.androidgames.framework.impl;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import android.app.Activity;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLSurfaceView.Renderer;
 import android.os.Bundle;
 import android.os.PowerManager.WakeLock;
+import android.support.v4.app.FragmentActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -18,7 +18,7 @@ import com.badlogic.androidgames.framework.Graphics;
 import com.badlogic.androidgames.framework.Input;
 import com.badlogic.androidgames.framework.Screen;
 
-public abstract class GLGame extends Activity implements Game, Renderer {
+public abstract class GLGame extends FragmentActivity implements Game, Renderer {
 	enum GLGameState {
 		Initialized, Running, Paused, Finished, Idle
 	}
@@ -47,16 +47,17 @@ public abstract class GLGame extends Activity implements Game, Renderer {
 		fileIO = new AndroidFileIO(this);
 		audio = new AndroidAudio(this);
 		input = new AndroidInput(this, glView, 1, 1);
-		//PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
-		//wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK,
-		//		"GLGame");
+		// PowerManager powerManager = (PowerManager)
+		// getSystemService(Context.POWER_SERVICE);
+		// wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK,
+		// "GLGame");
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
 		glView.onResume();
-		//wakeLock.acquire();
+		// wakeLock.acquire();
 	}
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
@@ -116,7 +117,7 @@ public abstract class GLGame extends Activity implements Game, Renderer {
 				}
 			}
 		}
-		//wakeLock.release();
+		// wakeLock.release();
 		glView.onPause();
 		super.onPause();
 	}

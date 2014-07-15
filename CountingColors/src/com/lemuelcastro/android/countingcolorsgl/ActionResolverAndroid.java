@@ -1,5 +1,6 @@
 package com.lemuelcastro.android.countingcolorsgl;
 
+import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +8,7 @@ import android.support.v4.util.LruCache;
 
 import com.badlogic.androidgames.framework.Pixmap;
 
+@SuppressLint("InlinedApi")
 public class ActionResolverAndroid {
 
 	private Context mAppContext;
@@ -26,12 +28,15 @@ public class ActionResolverAndroid {
 	public void showGameOver(int score) {
 		Intent i = new Intent(mAppContext, GameOver.class);
 		i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		i.putExtra(GameOverFragment.SCORE, score);
 		mAppContext.startActivity(i);
 	}
 
 	public void showMenu() {
 		Intent i = new Intent(mAppContext, Menu.class);
-		i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
 		mAppContext.startActivity(i);
 	}
 

@@ -51,9 +51,5 @@ public class MenuFragment extends Fragment {
 		return v;
 	}
 
-	@Override
-	public void onPause() {
-		super.onPause();
-	}
 
 }

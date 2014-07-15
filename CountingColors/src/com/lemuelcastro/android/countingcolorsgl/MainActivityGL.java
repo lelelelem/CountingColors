@@ -3,16 +3,25 @@ package com.lemuelcastro.android.countingcolorsgl;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.widget.Toast;
+
 import com.badlogic.androidgames.framework.Screen;
 import com.badlogic.androidgames.framework.impl.GLGame;
 
 public class MainActivityGL extends GLGame {
 	boolean firstTimeCreate = true;
 	private ActionResolverAndroid mActionResolverAndroid;
+	private GameScreen gS;
 
 	public Screen getStartScreen() {
 		mActionResolverAndroid = new ActionResolverAndroid(getApplication());
-		return new GameScreen(this,mActionResolverAndroid);
+		gS = new GameScreen(this, mActionResolverAndroid);
+		return gS;
 	}
 
 	@Override
@@ -21,8 +30,6 @@ public class MainActivityGL extends GLGame {
 		if (firstTimeCreate) {
 			AssetsOG.loader(this);
 			firstTimeCreate = false;
-		} else {
-			AssetsOG.reload();
 		}
 	}
 
@@ -31,4 +38,34 @@ public class MainActivityGL extends GLGame {
 		super.onPause();
 
 	}
+
+	@Override
+	public void onBackPressed() {
+		gS.setPaused(true);
+		// create dialog before exit
+		new AlertDialog.Builder(this).setTitle("Exit?")
+				.setMessage("Exiting to the Main Menu Wont Save Yer Score")
+				.setPositiveButton("Yes", new OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						Intent i = new Intent(getApplication(), Menu.class);
+						i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						startActivity(i);
+					}
+				}).setNegativeButton("Continue Game", new OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						gS.setPaused(false);
+					}
+				}).create().show();
+	}
+
+	@Override
+	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
+
+		super.onActivityResult(arg0, arg1, arg2);
+
+		Toast.makeText(getBaseContext(), "hehe", Toast.LENGTH_SHORT).show();
+	}
+
 }

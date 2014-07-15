@@ -16,6 +16,7 @@ import com.badlogic.androidgames.framework.impl.GLScreen;
 
 public class GameScreen extends GLScreen {
 
+	private boolean paused;
 	private ActionResolverAndroid mActionResolver;
 
 	private ArrayList<Data> mData = new ArrayList<Data>();
@@ -52,9 +53,11 @@ public class GameScreen extends GLScreen {
 	private Camera2D mGuiCam;
 	private SpriteBatcher mBatcher;
 
+	
+	
 	public GameScreen(Game game, ActionResolverAndroid actionResolverAndroid) {
 		super(game);
-
+		
 		// will handle activity control
 		mActionResolver = actionResolverAndroid;
 
@@ -201,7 +204,7 @@ public class GameScreen extends GLScreen {
 				else {
 					mBatcher.beginBatch(AssetsOG.tile);
 					mBatcher.drawSprite(134 + (float) x, CurrY, 268.0f, 400.0f,
-							AssetsOG.blueTile);
+							new TextureRegion(AssetsOG.tile, 268, 0, 268, 400));
 				}
 
 				mBatcher.endBatch();
@@ -209,7 +212,8 @@ public class GameScreen extends GLScreen {
 				// draw RedTile
 				mBatcher.beginBatch(AssetsOG.tile);
 				mBatcher.drawSprite(134 + (float) x, CurrY, 268.0f, 400.0f,
-						AssetsOG.redTile);
+						new TextureRegion(AssetsOG.tile, 0, 0, 268, 400));
+				
 				mBatcher.endBatch();
 			}
 
@@ -220,6 +224,9 @@ public class GameScreen extends GLScreen {
 	@Override
 	public void present(float deltaTime) {
 
+		if(paused)
+			return;
+		
 		GL10 gl = glGraphics.getGL();
 
 		mGuiCam.setViewportAndMatrices();
@@ -232,7 +239,7 @@ public class GameScreen extends GLScreen {
 		// draw pressed tiles;
 		if (mData.size() != 0) {
 			for (int i = 0; i < mData.size(); i++) {
-				if (mData.get(i).CurrentY <= -450) {
+				if (mData.get(i).CurrentY <= -600) {
 					mData.remove(i);
 					continue;
 				}
@@ -240,6 +247,7 @@ public class GameScreen extends GLScreen {
 			}
 
 		}
+		
 		// draw unpressed tiles
 		for (int i = 0; i < 6; i++) {
 			draw(deltaTime, mPixmaps.getInfo(), 0);
@@ -369,7 +377,7 @@ public class GameScreen extends GLScreen {
 
 	@Override
 	public void pause() {
-		// not used
+		paused=true;
 	}
 
 	@Override
@@ -379,7 +387,15 @@ public class GameScreen extends GLScreen {
 
 	@Override
 	public void dispose() {
-		this.dispose();
+		new FragmentListener() {
+			@Override
+			public void onBackButtonPressed() {
+			}
+		};
+	}
+
+	public void setPaused(boolean paused) {
+		this.paused = paused;
 	}
 
 }

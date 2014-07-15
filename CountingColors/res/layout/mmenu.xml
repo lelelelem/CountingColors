@@ -1,53 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ColorLem" >
+    android:layout_gravity="center"
+    android:background="@color/DarkCyan"
+    android:gravity="center"
+    android:orientation="vertical" >
 
     <TextView
         android:id="@+id/TextView01"
+        style="@style/shadow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="88dp"
-        android:text="COLORS"
-        android:textColor="@color/White"
-        android:textColorHint="@color/White"
-        android:textSize="52sp" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TextView01"
-        android:layout_centerHorizontal="true"
         android:text="COUNTING"
         android:textColor="@color/White"
         android:textColorHint="@color/White"
-        android:textSize="52sp" />
+        android:textSize="64sp" />
 
-    <Button
-        android:id="@+id/hscore"
+    <TextView
+        android:id="@+id/textView1"
+        style="@style/shadow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ngame"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:text="scores"
+        android:text="COLORS"
         android:textColor="@color/White"
-        android:textSize="50sp" />
+        android:textColorHint="@color/White"
+        android:textSize="64sp" />
 
-    <Button
-        android:id="@+id/ngame"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:padding="10dp"
-        android:text="new"
-        android:textColor="@color/White"
-        android:textSize="50sp" />
+        android:layout_marginTop="100dp"
+        android:orientation="vertical" >
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/ngame"
+            style="@style/press"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="new"
+            android:textSize="50sp" />
+
+        <Button
+            android:id="@+id/hscore"
+            style="@style/press"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="scores"
+            android:textSize="50sp" />
+    </LinearLayout>
+
+</LinearLayout>

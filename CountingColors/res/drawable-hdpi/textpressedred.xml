@@ -1,10 +1,10 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item 
-        android:drawable="@drawable/background_white" 
+        android:color="@color/White"
         android:state_pressed="false"/>
     <item 
-        android:drawable="@drawable/button_shape_r_pressed" 
+        android:color="@color/Aquamarine"
         android:state_pressed="true"/>
 
 </selector>
