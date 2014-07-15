@@ -34,9 +34,10 @@ public class ActionResolverAndroid {
 
 	public void showMenu() {
 		Intent i = new Intent(mAppContext, Menu.class);
-
+		
 		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
+		
+		
 		mAppContext.startActivity(i);
 	}
 
@@ -78,5 +79,6 @@ public class ActionResolverAndroid {
 		ModelSingleton.get(mAppContext).addDetails(mClass);
 		ModelSingleton.get(mAppContext).saveDetails();
 	}
+	
 
 }

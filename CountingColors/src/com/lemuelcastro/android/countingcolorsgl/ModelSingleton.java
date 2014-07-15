@@ -3,7 +3,6 @@ package com.lemuelcastro.android.countingcolorsgl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.TreeMap;
-import java.util.UUID;
 
 import org.json.JSONException;
 
@@ -48,10 +47,6 @@ public class ModelSingleton {
 
 	public void addDetails(ModelClass c) {
 		mModelClasses.add(c);
-	}
-
-	public ModelClass getDetail(UUID id) {
-		return null;
 	}
 
 	public boolean saveDetails() throws JSONException, IOException {
