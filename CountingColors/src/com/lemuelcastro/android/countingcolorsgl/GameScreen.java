@@ -53,11 +53,9 @@ public class GameScreen extends GLScreen {
 	private Camera2D mGuiCam;
 	private SpriteBatcher mBatcher;
 
-	
-	
 	public GameScreen(Game game, ActionResolverAndroid actionResolverAndroid) {
 		super(game);
-		
+
 		// will handle activity control
 		mActionResolver = actionResolverAndroid;
 
@@ -204,7 +202,7 @@ public class GameScreen extends GLScreen {
 				else {
 					mBatcher.beginBatch(AssetsOG.tile);
 					mBatcher.drawSprite(134 + (float) x, CurrY, 268.0f, 400.0f,
-							new TextureRegion(AssetsOG.tile, 268, 0, 268, 400));
+							AssetsOG.pressedTile);
 				}
 
 				mBatcher.endBatch();
@@ -212,8 +210,8 @@ public class GameScreen extends GLScreen {
 				// draw RedTile
 				mBatcher.beginBatch(AssetsOG.tile);
 				mBatcher.drawSprite(134 + (float) x, CurrY, 268.0f, 400.0f,
-						new TextureRegion(AssetsOG.tile, 0, 0, 268, 400));
-				
+						AssetsOG.doNotPressTile);
+
 				mBatcher.endBatch();
 			}
 
@@ -224,9 +222,9 @@ public class GameScreen extends GLScreen {
 	@Override
 	public void present(float deltaTime) {
 
-		if(paused)
+		if (paused)
 			return;
-		
+
 		GL10 gl = glGraphics.getGL();
 
 		mGuiCam.setViewportAndMatrices();
@@ -247,7 +245,7 @@ public class GameScreen extends GLScreen {
 			}
 
 		}
-		
+
 		// draw unpressed tiles
 		for (int i = 0; i < 6; i++) {
 			draw(deltaTime, mPixmaps.getInfo(), 0);
@@ -358,8 +356,6 @@ public class GameScreen extends GLScreen {
 		char stScoreArr[] = stScore.toCharArray();
 
 		for (int i = 0, x = 540; i < stScoreArr.length; i++, x += 33) {
-			int row = Integer.parseInt(Character.toString(stScoreArr[i])) <= 4 ? 0
-					: 42;
 
 			mBatcher.beginBatch(AssetsOG.scores);
 			mBatcher.drawSprite(
@@ -367,17 +363,14 @@ public class GameScreen extends GLScreen {
 					1800,
 					32f,
 					42f,
-					new TextureRegion(
-							AssetsOG.scores,
-							(Integer.parseInt(Character.toString(stScoreArr[i])) % 5) * 32,
-							row, 32, 42));
+					AssetsOG.scoresRegion[Integer.parseInt(Character.toString(stScoreArr[i]))]);
 			mBatcher.endBatch();
 		}
 	}
 
 	@Override
 	public void pause() {
-		paused=true;
+		paused = true;
 	}
 
 	@Override

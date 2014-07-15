@@ -7,7 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 @SuppressWarnings("serial")
-public class ModelClass implements Serializable {
+public class ModelClass implements Serializable, Comparable<ModelClass> {
 
 	private static final String JSON_UID = "id", JSON_SCORE = "score";
 
@@ -49,6 +49,12 @@ public class ModelClass implements Serializable {
 
 	public void setScore(String score) {
 		mScore = score;
+	}
+
+	@Override
+	public int compareTo(ModelClass another) {
+		// TODO Auto-generated method stub
+		return Integer.parseInt(another.mScore)-Integer.parseInt(this.mScore);
 	}
 
 }

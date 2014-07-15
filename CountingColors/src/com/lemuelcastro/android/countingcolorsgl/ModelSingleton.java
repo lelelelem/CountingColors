@@ -2,6 +2,7 @@ package com.lemuelcastro.android.countingcolorsgl;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.TreeMap;
 
 import org.json.JSONException;
@@ -56,35 +57,17 @@ public class ModelSingleton {
 
 	// ordering of scores in highscore
 	public ArrayList<ModelClass> highScores() {
-
+		
 		ArrayList<ModelClass> tempModelClasses = new ArrayList<ModelClass>();
-
-		mHigh = new TreeMap<Integer, Integer>();
-
 		try {
-			// get all saved scores
 			tempModelClasses = mJsonSerializer.loadDetails();
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 
-		for (int i = 0; i < tempModelClasses.size(); i++) {
-			// place loaded scores to Treemap using its own value
-			mHigh.put(Integer.parseInt(tempModelClasses.get(i).getScore()),
-					Integer.parseInt(tempModelClasses.get(i).getScore()));
-		}
-
-		tempModelClasses = new ArrayList<ModelClass>();
-
-		for (int i = 0, size = mHigh.size() > 10 ? 10 : mHigh.size(); i < size; i++) {
-			ModelClass temp = new ModelClass();
-			// obtain highest key
-			temp.setScore(Integer.toString(mHigh.get(mHigh.lastKey())));
-			// remove highest key and value
-			mHigh.remove(mHigh.lastKey());
-			tempModelClasses.add(temp);
-		}
-
+		Collections.sort(tempModelClasses);
+		
 		return tempModelClasses;
 
 	}
