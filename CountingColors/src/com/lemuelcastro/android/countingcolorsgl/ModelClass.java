@@ -53,7 +53,6 @@ public class ModelClass implements Serializable, Comparable<ModelClass> {
 
 	@Override
 	public int compareTo(ModelClass another) {
-		// TODO Auto-generated method stub
 		return Integer.parseInt(another.mScore)-Integer.parseInt(this.mScore);
 	}
 
