@@ -18,7 +18,7 @@ public class GameScreen extends GLScreen {
 
 	private boolean paused;
 	private ActionResolverAndroid mActionResolver;
-
+	
 	private ArrayList<Data> mData = new ArrayList<Data>();
 	private ArrayList<Integer> mArrayListx = new ArrayList<Integer>();
 	private ArrayList<Integer> mArrayList2x = new ArrayList<Integer>();
@@ -62,7 +62,6 @@ public class GameScreen extends GLScreen {
 		// sets up height and width of screen
 		mGuiCam = new Camera2D(glGraphics, 1080, 1920);
 		mBatcher = new SpriteBatcher(glGraphics, 200);
-
 		mTicker = 0;
 		first = true;
 
@@ -142,7 +141,7 @@ public class GameScreen extends GLScreen {
 
 			if (forTouch.type == TouchEvent.TOUCH_UP) {
 				// if first button is touched
-				if (((new methodsForDraw().inBounds(forTouch,
+				if (((TouchUtils.inBounds(forTouch,
 						mArrayListx.get(mCurrindex), (int) temp.CurrentY - 205,
 						245, 550)))) {
 					mScore += mScoreListx.get(mCurrindex);
@@ -150,7 +149,7 @@ public class GameScreen extends GLScreen {
 					setUpNewNode();
 				}
 				// if second button is touched
-				else if (((new methodsForDraw().inBounds(forTouch,
+				else if (((TouchUtils.inBounds(forTouch,
 						mArrayList2x.get(mCurrindex),
 						(int) temp.CurrentY - 205, 245, 550)))) {
 					mScore += mScoreList2x.get(mCurrindex);
@@ -380,11 +379,7 @@ public class GameScreen extends GLScreen {
 
 	@Override
 	public void dispose() {
-		new FragmentListener() {
-			@Override
-			public void onBackButtonPressed() {
-			}
-		};
+		
 	}
 
 	public void setPaused(boolean paused) {

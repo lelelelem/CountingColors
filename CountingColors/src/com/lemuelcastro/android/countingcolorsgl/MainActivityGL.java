@@ -3,12 +3,10 @@ package com.lemuelcastro.android.countingcolorsgl;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.widget.Toast;
 
 import com.badlogic.androidgames.framework.Screen;
 import com.badlogic.androidgames.framework.impl.GLGame;
@@ -34,12 +32,6 @@ public class MainActivityGL extends GLGame {
 	}
 
 	@Override
-	public void onPause() {
-		super.onPause();
-
-	}
-
-	@Override
 	public void onBackPressed() {
 		gS.setPaused(true);
 		// create dialog before exit
@@ -58,14 +50,6 @@ public class MainActivityGL extends GLGame {
 						gS.setPaused(false);
 					}
 				}).create().show();
-	}
-
-	@Override
-	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
-
-		super.onActivityResult(arg0, arg1, arg2);
-
-		Toast.makeText(getBaseContext(), "hehe", Toast.LENGTH_SHORT).show();
 	}
 
 }

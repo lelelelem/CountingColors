@@ -38,12 +38,6 @@ public class GameOverFragment extends Fragment {
 	};
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-	
-	}
-
-	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.gameover, container, false);
@@ -59,13 +53,6 @@ public class GameOverFragment extends Fragment {
 		mNewGame = (Button)v.findViewById(R.id.nG);
 		mNewGame.setOnClickListener(mClickListener);
 		
-		new FragmentListener() {
-			@Override
-			public void onBackButtonPressed() {
-			//left blank parent holds method
-			}
-		};
-
 		return v;
 	}
 	

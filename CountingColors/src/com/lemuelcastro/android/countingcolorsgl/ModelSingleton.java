@@ -3,7 +3,6 @@ package com.lemuelcastro.android.countingcolorsgl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.TreeMap;
 
 import org.json.JSONException;
 
@@ -15,7 +14,6 @@ public class ModelSingleton {
 
 	private ArrayList<ModelClass> mModelClasses;
 
-	private TreeMap<Integer, Integer> mHigh;
 	private JSONSerializer mJsonSerializer;
 
 	private static ModelSingleton sModelSingleton;
@@ -57,7 +55,7 @@ public class ModelSingleton {
 
 	// ordering of scores in highscore
 	public ArrayList<ModelClass> highScores() {
-		
+
 		ArrayList<ModelClass> tempModelClasses = new ArrayList<ModelClass>();
 		try {
 			tempModelClasses = mJsonSerializer.loadDetails();
@@ -66,7 +64,7 @@ public class ModelSingleton {
 		}
 
 		Collections.sort(tempModelClasses);
-		
+
 		return tempModelClasses;
 
 	}

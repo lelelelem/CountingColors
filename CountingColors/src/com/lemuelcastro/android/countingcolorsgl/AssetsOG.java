@@ -38,6 +38,4 @@ public class AssetsOG {
 
 	}
 
-	public static void reload() {
-	}
 }
