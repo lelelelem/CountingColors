@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
-    android:background="@color/DarkCyan"
+    android:background="@color/SlateGray"
     android:gravity="center"
     android:orientation="vertical" >
 
@@ -48,20 +48,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
+
         <Button
             android:id="@+id/ngame"
+            style="@style/press"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/press"
+            android:background="@drawable/buttonpressedred_rec"
             android:text="@string/b_menu" />
         
         <Button
             android:id="@+id/nG"
+            style="@style/press"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="14dp"
-            style="@style/press"
+            android:background="@drawable/buttonpressedred_rec"
             android:text="New Game" />
+
 	</LinearLayout>
 
 </LinearLayout>

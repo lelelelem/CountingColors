@@ -1,7 +1,6 @@
 package com.lemuelcastro.android.countingcolorsgl;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -9,35 +8,22 @@ import org.json.JSONObject;
 @SuppressWarnings("serial")
 public class ModelClass implements Serializable, Comparable<ModelClass> {
 
-	private static final String JSON_UID = "id", JSON_SCORE = "score";
+	private static final String JSON_SCORE = "score";
 
-	private String mScore, mHId;
-
-	private UUID mId;
-
-	public String uuid() {
-		return mHId;
-	}
+	private String mScore;
 
 	public ModelClass() {
-		mId = UUID.randomUUID();
 	}
 
 	public ModelClass(JSONObject jsonObject) throws JSONException {
 
 		mScore = jsonObject.getString(JSON_SCORE);
-		mHId = jsonObject.getString(JSON_UID);
-
 	}
 
 	public JSONObject toJsonObject() throws JSONException {
 
 		JSONObject jsonObject = new JSONObject();
 
-		if (mId == null)
-			mId = UUID.randomUUID();
-
-		jsonObject.put(JSON_UID, mId.toString());
 		jsonObject.put(JSON_SCORE, mScore);
 
 		return jsonObject;

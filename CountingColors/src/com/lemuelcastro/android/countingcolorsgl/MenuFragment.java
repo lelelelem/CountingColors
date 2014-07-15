@@ -13,7 +13,6 @@ import com.lemuelcastro.android.countingcolors.R;
 
 public class MenuFragment extends Fragment {
 
-	
 	private View.OnClickListener mClickListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
@@ -37,7 +36,6 @@ public class MenuFragment extends Fragment {
 
 		Button scoreButton, newButton;
 
-		
 		View v = inflater.inflate(R.layout.mmenu, container, false);
 		scoreButton = (Button) v.findViewById(R.id.ngame);
 		newButton = (Button) v.findViewById(R.id.hscore);

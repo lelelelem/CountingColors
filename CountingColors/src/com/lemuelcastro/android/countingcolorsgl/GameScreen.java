@@ -17,6 +17,7 @@ import com.badlogic.androidgames.framework.impl.GLScreen;
 public class GameScreen extends GLScreen {
 
 	private boolean paused;
+	
 	private ActionResolverAndroid mActionResolver;
 	
 	private ArrayList<Data> mData = new ArrayList<Data>();

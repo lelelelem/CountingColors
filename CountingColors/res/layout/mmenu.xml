@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@color/DarkCyan"
+    android:background="@color/DarkSlateGray"
     android:gravity="center"
     android:orientation="vertical" >
 
@@ -16,7 +16,9 @@
         android:text="COUNTING"
         android:textColor="@color/White"
         android:textColorHint="@color/White"
-        android:textSize="64sp" />
+        android:textSize="64sp"
+        android:textStyle="bold"
+        android:typeface="monospace" />
 
     <TextView
         android:id="@+id/textView1"
@@ -26,7 +28,9 @@
         android:text="COLORS"
         android:textColor="@color/White"
         android:textColorHint="@color/White"
-        android:textSize="64sp" />
+        android:textSize="64sp"
+        android:textStyle="bold"
+        android:typeface="monospace" />
 
     <ImageView
         android:id="@+id/imageView1"
@@ -41,24 +45,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:orientation="vertical" >
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/ngame"
             style="@style/press"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="new"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="N"
+            android:layout_marginRight="24dp"
+            android:padding="10dp"
             android:textSize="50sp" />
 
         <Button
             android:id="@+id/hscore"
             style="@style/press"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:text="scores"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="H"
             android:textSize="50sp" />
+
     </LinearLayout>
 
 </LinearLayout>

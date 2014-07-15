@@ -8,7 +8,6 @@ import android.content.Intent;
 public class ActionResolverAndroid {
 
 	private Context mAppContext;
-	private ModelClass mClass;
 
 	public ActionResolverAndroid(Context appContext) {
 		this.mAppContext = appContext;
@@ -36,8 +35,7 @@ public class ActionResolverAndroid {
 	public void saveScore(int score) throws Exception {
 		if (score == 0)
 			return;
-
-		mClass = new ModelClass();
+		ModelClass mClass = new ModelClass();
 		mClass.setScore(Integer.toString(score));
 
 		ModelSingleton.get(mAppContext).addDetails(mClass);
