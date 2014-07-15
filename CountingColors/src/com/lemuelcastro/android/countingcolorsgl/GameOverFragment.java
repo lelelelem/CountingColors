@@ -16,9 +16,6 @@ public class GameOverFragment extends Fragment {
 
 	public static final String SCORE = "score";
 	
-	private TextView mScore;
-	private Button mButton, mNewGame;
-
 	private View.OnClickListener mClickListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
@@ -42,16 +39,20 @@ public class GameOverFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.gameover, container, false);
 
-		mScore = (TextView) v.findViewById(R.id.score);
 
-		mScore.setText(Integer.toString(getActivity().getIntent().getIntExtra(SCORE,0)));
-
-		mButton = (Button) v.findViewById(R.id.ngame);
-
-		mButton.setOnClickListener(mClickListener);
+		TextView score;
+		Button highScoreButton, newGameButton;
 		
-		mNewGame = (Button)v.findViewById(R.id.nG);
-		mNewGame.setOnClickListener(mClickListener);
+		score = (TextView) v.findViewById(R.id.score);
+
+		score.setText(Integer.toString(getActivity().getIntent().getIntExtra(SCORE,0)));
+
+		highScoreButton = (Button) v.findViewById(R.id.ngame);
+
+		highScoreButton.setOnClickListener(mClickListener);
+		
+		newGameButton = (Button)v.findViewById(R.id.nG);
+		newGameButton.setOnClickListener(mClickListener);
 		
 		return v;
 	}
