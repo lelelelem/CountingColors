@@ -1,14 +1,15 @@
 package com.lemuelcastro.android.countingcolorsgl;
 
-import java.util.HashMap;
+import android.annotation.SuppressLint;
+import android.util.SparseIntArray;
 
 //Representation of Tiles
-
+@SuppressLint("UseSparseArrays")
 public class Data {
 
 	Data next;
 	boolean isHead;
-	HashMap<String, Integer> buttonPixmapNode = new HashMap<String, Integer>();
+	SparseIntArray buttonPixmapNode = new SparseIntArray();
 	int numbers[] = new int[2];
 
 	float CurrentY;
@@ -26,7 +27,7 @@ class PixmapList {
 		tail = null;
 	}
 
-	public void add(HashMap<String, Integer> imgTiles, int coor[][],
+	public void add(SparseIntArray imgTiles, int coor[][],
 			int CurrentY, boolean lock, int tileScore[]) {
 
 		temp = new Data();

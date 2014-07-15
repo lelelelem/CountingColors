@@ -1,11 +1,12 @@
 package com.lemuelcastro.android.countingcolorsgl;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
 import javax.microedition.khronos.opengles.GL10;
+
+import android.util.SparseIntArray;
 
 import com.badlogic.androidgames.framework.Game;
 import com.badlogic.androidgames.framework.Input.TouchEvent;
@@ -25,7 +26,7 @@ public class GameScreen extends GLScreen {
 	private ArrayList<Integer> mArrayList2x = new ArrayList<Integer>();
 
 	private ArrayList<Integer> arrayList = new ArrayList<Integer>();
-	private HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
+	private SparseIntArray sparseArray;
 	private ArrayList<Integer> mScoreListx = new ArrayList<Integer>();
 	private ArrayList<Integer> mScoreList2x = new ArrayList<Integer>();
 
@@ -117,7 +118,7 @@ public class GameScreen extends GLScreen {
 		// odds are 1/4
 		int odds = new Random().nextInt(4);
 		// can be replaced by ArrayList
-		HashMap<String, Integer> hashtemp = generateRandom(odds);
+		SparseIntArray hashtemp = generateRandom(odds);
 
 		// create new tile body
 		// adds new integer id to Model Class
@@ -190,7 +191,7 @@ public class GameScreen extends GLScreen {
 		}
 		for (int j = 0, x = 0; j < 4; j++, x += TILE_WIDTH) {
 
-			if (data.buttonPixmapNode.get(Integer.toString(j)) == 0) {
+			if (data.buttonPixmapNode.get(j) == 0) {
 				// draw score
 				if (flag == 0) {
 					mBatcher.beginBatch(AssetsOG.numbers);
@@ -239,6 +240,7 @@ public class GameScreen extends GLScreen {
 			for (int i = 0; i < mData.size(); i++) {
 				if (mData.get(i).CurrentY <= -600) {
 					mData.remove(i);
+					
 					continue;
 				}
 				draw(deltaTime, mData.get(i), 1);
@@ -259,12 +261,12 @@ public class GameScreen extends GLScreen {
 	}
 
 	// randomly generate button sequence
-	private HashMap<String, Integer> generateRandom(int odds) {
+	private SparseIntArray generateRandom(int odds) {
 
 		mArrayNum = new int[2];
 
 		arrayList.clear();
-		hashMap = new HashMap<String, Integer>();
+		sparseArray = new SparseIntArray();
 
 		// adds 4 numbers to arraylist
 		for (int i = 0; i < 4; i++) {
@@ -278,7 +280,7 @@ public class GameScreen extends GLScreen {
 			int index = new Random().nextInt(arrayList.size());
 
 			if (arrayList.get(index) == 0) {
-				hashMap.put(Integer.toString(i), 0);
+				sparseArray.put(i, 0);
 				PlaceValue(i, 0);
 				mArrayListx.add(mCorrectCorrdinate[0][0]);
 				if (odds != 1)
@@ -286,7 +288,7 @@ public class GameScreen extends GLScreen {
 				PlaceTileScore(0, odds);
 			} else {
 				if (odds == 1 && arrayList.get(index) == 1) {
-					hashMap.put(Integer.toString(i), 0);
+					sparseArray.put(i, 0);
 					PlaceValue(i, 1);
 					mArrayList2x.add(mCorrectCorrdinate[1][0]);
 
@@ -294,14 +296,14 @@ public class GameScreen extends GLScreen {
 				}
 
 				else {
-					hashMap.put(Integer.toString(i), 1);
+					sparseArray.put(i, 1);
 				}
 			}
 
 			arrayList.remove(index);
 		}
 
-		return hashMap;
+		return sparseArray;
 	}
 
 	// places coordinate
