@@ -141,7 +141,7 @@ public class GameScreen extends GLScreen {
 
 			if (forTouch.type == TouchEvent.TOUCH_UP) {
 				// if first button is touched
-				if (((new methods().inBounds(forTouch,
+				if (((new methodsForDraw().inBounds(forTouch,
 						mArrayListx.get(mCurrindex), (int) temp.CurrentY - 205,
 						245, 550)))) {
 					mScore += mScoreListx.get(mCurrindex);
@@ -149,7 +149,7 @@ public class GameScreen extends GLScreen {
 					setUpNewNode();
 				}
 				// if second button is touched
-				else if (((new methods().inBounds(forTouch,
+				else if (((new methodsForDraw().inBounds(forTouch,
 						mArrayList2x.get(mCurrindex),
 						(int) temp.CurrentY - 205, 245, 550)))) {
 					mScore += mScoreList2x.get(mCurrindex);

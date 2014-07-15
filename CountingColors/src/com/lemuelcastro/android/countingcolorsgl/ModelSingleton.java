@@ -21,7 +21,7 @@ public class ModelSingleton {
 	private static ModelSingleton sModelSingleton;
 	private Context mContext;
 
-	public ModelSingleton(Context context) {
+	private ModelSingleton(Context context) {
 		mContext = context;
 		mJsonSerializer = new JSONSerializer(mContext, FILENAME);
 

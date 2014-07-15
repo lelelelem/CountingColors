@@ -9,7 +9,7 @@ import org.json.JSONObject;
 @SuppressWarnings("serial")
 public class ModelClass implements Serializable {
 
-	private final String JSON_UID = "id", JSON_SCORE = "score";
+	private static final String JSON_UID = "id", JSON_SCORE = "score";
 
 	private String mScore, mHId;
 
