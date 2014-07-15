@@ -12,7 +12,7 @@ import com.badlogic.androidgames.framework.Screen;
 import com.badlogic.androidgames.framework.impl.GLGame;
 
 public class MainActivityGL extends GLGame {
-	boolean firstTimeCreate = true;
+	private boolean firstTimeCreate = true;
 	private ActionResolverAndroid mActionResolverAndroid;
 	private GameScreen gS;
 
