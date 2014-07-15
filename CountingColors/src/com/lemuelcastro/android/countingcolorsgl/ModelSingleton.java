@@ -17,11 +17,9 @@ public class ModelSingleton {
 	private JSONSerializer mJsonSerializer;
 
 	private static ModelSingleton sModelSingleton;
-	private Context mContext;
 
 	private ModelSingleton(Context context) {
-		mContext = context;
-		mJsonSerializer = new JSONSerializer(mContext, FILENAME);
+		mJsonSerializer = new JSONSerializer(context, FILENAME);
 
 		try {
 			mModelClasses = highScores();
