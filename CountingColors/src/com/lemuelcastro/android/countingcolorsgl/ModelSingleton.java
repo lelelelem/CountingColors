@@ -20,7 +20,6 @@ public class ModelSingleton {
 
 	private ModelSingleton(Context context) {
 		mJsonSerializer = new JSONSerializer(context, FILENAME);
-
 		try {
 			mModelClasses = highScores();
 		} catch (Exception e) {
@@ -39,7 +38,7 @@ public class ModelSingleton {
 	}
 
 	public ArrayList<ModelClass> getDetails() {
-		return mModelClasses;
+		return highScores();
 	}
 
 	public void addDetails(ModelClass c) {
@@ -62,7 +61,7 @@ public class ModelSingleton {
 		}
 
 		Collections.sort(tempModelClasses);
-		
+
 		return tempModelClasses;
 
 	}

@@ -18,9 +18,9 @@ import com.badlogic.androidgames.framework.impl.GLScreen;
 public class GameScreen extends GLScreen {
 
 	private boolean paused;
-	
+
 	private ActionResolverAndroid mActionResolver;
-	
+
 	private ArrayList<Data> mData = new ArrayList<Data>();
 	private ArrayList<Integer> mArrayListx = new ArrayList<Integer>();
 	private ArrayList<Integer> mArrayList2x = new ArrayList<Integer>();
@@ -149,6 +149,7 @@ public class GameScreen extends GLScreen {
 					mScore += mScoreListx.get(mCurrindex);
 					first = false;
 					setUpNewNode();
+					AssetsOG.playSound(AssetsOG.touch);
 				}
 				// if second button is touched
 				else if (((TouchUtils.inBounds(forTouch,
@@ -158,6 +159,7 @@ public class GameScreen extends GLScreen {
 
 					first = false;
 					setUpNewNode();
+					AssetsOG.playSound(AssetsOG.touch);
 				}
 				// if wrong button is touched
 				else {
@@ -178,8 +180,11 @@ public class GameScreen extends GLScreen {
 	// draw tiles
 	public void draw(float deltaTime, Data data, int flag) {
 		int arrayCtr = 0;
-		data.CurrentY = mPixmaps.head.CurrentY <= SCREEN_BOTTOM + 205 ? data.CurrentY
-				: data.CurrentY - mFramesPerS * deltaTime;
+
+		if (!paused)
+			data.CurrentY = mPixmaps.head.CurrentY <= SCREEN_BOTTOM + 205 ? data.CurrentY
+					: data.CurrentY - mFramesPerS * deltaTime;
+
 		CurrY = data.CurrentY;
 
 		if (flag == 0 && CurrY <= SCREEN_BOTTOM + 205 && !first) {
@@ -223,9 +228,6 @@ public class GameScreen extends GLScreen {
 	@Override
 	public void present(float deltaTime) {
 
-		if (paused)
-			return;
-
 		GL10 gl = glGraphics.getGL();
 
 		mGuiCam.setViewportAndMatrices();
@@ -240,7 +242,7 @@ public class GameScreen extends GLScreen {
 			for (int i = 0; i < mData.size(); i++) {
 				if (mData.get(i).CurrentY <= -600) {
 					mData.remove(i);
-					
+
 					continue;
 				}
 				draw(deltaTime, mData.get(i), 1);
@@ -360,29 +362,24 @@ public class GameScreen extends GLScreen {
 		for (int i = 0, x = 540; i < stScoreArr.length; i++, x += 33) {
 
 			mBatcher.beginBatch(AssetsOG.scores);
-			mBatcher.drawSprite(
-					x,
-					1800,
-					32f,
-					42f,
-					AssetsOG.scoresRegion[Integer.parseInt(Character.toString(stScoreArr[i]))]);
+			mBatcher.drawSprite(x, 1800, 32f, 42f,
+					AssetsOG.scoresRegion[Integer.parseInt(Character
+							.toString(stScoreArr[i]))]);
 			mBatcher.endBatch();
 		}
 	}
 
 	@Override
 	public void pause() {
-		paused = true;
 	}
 
 	@Override
 	public void resume() {
-		// not used
 	}
 
 	@Override
 	public void dispose() {
-		
+
 	}
 
 	public void setPaused(boolean paused) {

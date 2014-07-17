@@ -1,5 +1,6 @@
 package com.lemuelcastro.android.countingcolorsgl;
 
+import com.badlogic.androidgames.framework.Sound;
 import com.badlogic.androidgames.framework.gl.Texture;
 import com.badlogic.androidgames.framework.gl.TextureRegion;
 import com.badlogic.androidgames.framework.impl.GLGame;
@@ -17,6 +18,8 @@ public class AssetsOG {
 	public static Texture scores;
 	public static TextureRegion scoresRegion[] = new TextureRegion[10];
 
+	public static Sound touch;
+
 	public static void loader(GLGame glGame) {
 
 		tile = new Texture(glGame, "tileTile.png");
@@ -31,11 +34,17 @@ public class AssetsOG {
 
 		scores = new Texture(glGame, "numbersscore.png");
 		for (int i = 0; i < scoresRegion.length; i++) {
-			int row = i < 4 ? 0 : 42;
-			scoresRegion[i] = new TextureRegion(AssetsOG.scores, (i%5) * 32, row,
-					32, 42);
+			int row = i < 5 ? 0 : 42;
+			scoresRegion[i] = new TextureRegion(AssetsOG.scores, (i % 5) * 32,
+					row, 32, 42);
 		}
 
+		touch = glGame.getAudio().newSound("touch.wav");
+
+	}
+
+	public static void playSound(Sound sound) {
+		sound.play(1);
 	}
 
 }

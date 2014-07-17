@@ -50,7 +50,7 @@ public abstract class GLGame extends FragmentActivity implements Game, Renderer 
 		// PowerManager powerManager = (PowerManager)
 		// getSystemService(Context.POWER_SERVICE);
 		// wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK,
-		// "GLGame");
+		// "GLGame");	
 	}
 
 	@Override

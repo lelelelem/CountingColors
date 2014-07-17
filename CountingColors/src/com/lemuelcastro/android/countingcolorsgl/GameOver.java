@@ -9,6 +9,7 @@ public class GameOver extends SingleFragmentActivity{
 
 	@Override
 	protected Fragment setupFragment() {
+		GameScreenSingleton.setNull();
 		return new GameOverFragment();
 	}
 
