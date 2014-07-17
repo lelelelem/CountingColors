@@ -17,6 +17,13 @@ public class ActionResolverAndroid {
 		mAppContext.startActivity(new Intent(mAppContext, ListActivity.class));
 	}
 
+	public float[] getDimension() {
+		float dimension[] = {
+				mAppContext.getResources().getDisplayMetrics().widthPixels,
+				mAppContext.getResources().getDisplayMetrics().heightPixels };
+		return dimension;
+	}
+
 	public void showGameOver(int score) {
 		Intent i = new Intent(mAppContext, GameOver.class);
 		i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

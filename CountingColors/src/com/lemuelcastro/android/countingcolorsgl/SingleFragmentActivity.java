@@ -1,14 +1,13 @@
 package com.lemuelcastro.android.countingcolorsgl;
 
-import com.lemuelcastro.android.countingcolors.R;
-
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.lemuelcastro.android.countingcolors.R;
 
 public abstract class SingleFragmentActivity extends FragmentActivity {
 
@@ -18,7 +17,6 @@ public abstract class SingleFragmentActivity extends FragmentActivity {
 	// setups activity layout
 	protected abstract int setupMain();
 
-	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle arg0) {
 

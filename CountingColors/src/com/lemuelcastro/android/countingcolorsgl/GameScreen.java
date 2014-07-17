@@ -35,7 +35,7 @@ public class GameScreen extends GLScreen {
 	private static final int SCREEN_BOTTOM = 0;
 
 	private int mFramesPerS;
-
+	private float dimension[];
 	private Data temp;
 	private float CurrY;
 
@@ -60,6 +60,9 @@ public class GameScreen extends GLScreen {
 
 		// will handle activity control
 		mActionResolver = actionResolverAndroid;
+
+		// get real dimension
+		dimension = mActionResolver.getDimension();
 
 		// sets up height and width of screen
 		mGuiCam = new Camera2D(glGraphics, 1080, 1920);
@@ -143,9 +146,10 @@ public class GameScreen extends GLScreen {
 
 			if (forTouch.type == TouchEvent.TOUCH_UP) {
 				// if first button is touched
+
 				if (((TouchUtils.inBounds(forTouch,
 						mArrayListx.get(mCurrindex), (int) temp.CurrentY - 205,
-						245, 550)))) {
+						260, 550, dimension)))) {
 					mScore += mScoreListx.get(mCurrindex);
 					first = false;
 					setUpNewNode();
@@ -154,7 +158,7 @@ public class GameScreen extends GLScreen {
 				// if second button is touched
 				else if (((TouchUtils.inBounds(forTouch,
 						mArrayList2x.get(mCurrindex),
-						(int) temp.CurrentY - 205, 245, 550)))) {
+						(int) temp.CurrentY - 205, 260, 550, dimension)))) {
 					mScore += mScoreList2x.get(mCurrindex);
 
 					first = false;
@@ -369,21 +373,26 @@ public class GameScreen extends GLScreen {
 		}
 	}
 
+	public void setPaused(boolean paused) {
+		this.paused = paused;
+	}
+
 	@Override
 	public void pause() {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void resume() {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void dispose() {
+		// TODO Auto-generated method stub
 
-	}
-
-	public void setPaused(boolean paused) {
-		this.paused = paused;
 	}
 
 }

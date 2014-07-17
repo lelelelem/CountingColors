@@ -15,12 +15,12 @@ import com.lemuelcastro.android.countingcolors.R;
 public class GameOverFragment extends Fragment {
 
 	public static final String SCORE = "score";
-	
+
 	private View.OnClickListener mClickListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			Intent i = null;
-			switch(v.getId()){
+			switch (v.getId()) {
 			case R.id.ngame:
 				i = new Intent(getActivity(), Menu.class);
 				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -39,24 +39,22 @@ public class GameOverFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.gameover, container, false);
 
-
 		TextView score;
 		Button highScoreButton, newGameButton;
-		
+
 		score = (TextView) v.findViewById(R.id.score);
 
-		score.setText(Integer.toString(getActivity().getIntent().getIntExtra(SCORE,0)));
+		score.setText(Integer.toString(getActivity().getIntent().getIntExtra(
+				SCORE, 0)));
 
 		highScoreButton = (Button) v.findViewById(R.id.ngame);
 
 		highScoreButton.setOnClickListener(mClickListener);
-		
-		newGameButton = (Button)v.findViewById(R.id.nG);
+
+		newGameButton = (Button) v.findViewById(R.id.nG);
 		newGameButton.setOnClickListener(mClickListener);
-		
+
 		return v;
 	}
-	
-	
 
 }

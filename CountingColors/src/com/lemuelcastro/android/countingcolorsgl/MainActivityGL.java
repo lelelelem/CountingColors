@@ -7,17 +7,14 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.util.Log;
 
 import com.badlogic.androidgames.framework.Screen;
 import com.badlogic.androidgames.framework.impl.GLGame;
 
 public class MainActivityGL extends GLGame {
 
-	private static final String TAG = null;
 	private boolean firstTimeCreate = true;
 	private GameScreen gS;
-	
 
 	public Screen getStartScreen() {
 		ActionResolverAndroid mActionResolverAndroid = new ActionResolverAndroid(
@@ -62,7 +59,6 @@ public class MainActivityGL extends GLGame {
 				}).create().show();
 	}
 
-	
 	@Override
 	public void onResume() {
 		super.onResume();
@@ -72,12 +68,10 @@ public class MainActivityGL extends GLGame {
 			gS = GameScreenSingleton.get(this, mActionResolverAndroid)
 					.getmGameScreen();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Log.i(TAG, "entryResume");
 		firstTimeCreate = true;
-		
+
 	}
 
 }

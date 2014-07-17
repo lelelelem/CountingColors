@@ -27,8 +27,8 @@ class PixmapList {
 		tail = null;
 	}
 
-	public void add(SparseIntArray imgTiles, int coor[][],
-			int CurrentY, boolean lock, int tileScore[]) {
+	public void add(SparseIntArray imgTiles, int coor[][], int CurrentY,
+			boolean lock, int tileScore[]) {
 
 		temp = new Data();
 

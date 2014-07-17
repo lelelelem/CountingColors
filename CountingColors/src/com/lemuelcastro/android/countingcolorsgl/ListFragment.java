@@ -17,8 +17,8 @@ public class ListFragment extends android.support.v4.app.ListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		ArrayList<ModelClass> mModelClass=null;
-		
+		ArrayList<ModelClass> mModelClass = null;
+
 		getActivity().setTitle("Details..Details..and Details..");
 
 		try {

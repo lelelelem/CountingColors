@@ -13,8 +13,11 @@ public final class TouchUtils {
 	}
 
 	public static boolean inBounds(TouchEvent event, int x, int y, int width,
-			int height) {
-		return (event.x > x && event.x < x + width - 1 && 1920 - event.y > y && 1920 - event.y < y
+			int height, float dimension[]) {
+
+		return (((int) ((1080.0f / dimension[0]) * event.x)) > x
+				&& ((int) ((1080.0f / dimension[0]) * event.x)) < x + width - 1
+				&& dimension[1] - event.y > y && dimension[1] - event.y < y
 				+ height - 1);
 
 	}

@@ -4,7 +4,7 @@ import com.lemuelcastro.android.countingcolors.R;
 
 import android.support.v4.app.Fragment;
 
-public class Menu extends SingleFragmentActivity{
+public class Menu extends SingleFragmentActivity {
 
 	@Override
 	protected Fragment setupFragment() {
