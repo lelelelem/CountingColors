@@ -16,15 +16,12 @@ public class MenuFragment extends Fragment {
 	private View.OnClickListener mClickListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			Intent i;
 			switch (v.getId()) {
 			case R.id.ngame:
-				i = new Intent(getActivity(), MainActivityGL.class);
-				startActivity(i);
+				startActivity(new Intent(getActivity(), MainActivityGL.class));
 				break;
 			case R.id.hscore:
-				i = new Intent(getActivity(), ListActivity.class);
-				startActivity(i);
+				startActivity(new Intent(getActivity(), ListActivity.class));
 				break;
 			}
 		}

@@ -41,7 +41,6 @@ public class GameScreen extends GLScreen {
 
 	private boolean first;
 
-	private int mTicker;
 	private int mScore;
 	private int mCorrectCorrdinate[][];
 	private int mArrayNum[];
@@ -67,10 +66,10 @@ public class GameScreen extends GLScreen {
 		// sets up height and width of screen
 		mGuiCam = new Camera2D(glGraphics, 1080, 1920);
 		mBatcher = new SpriteBatcher(glGraphics, 200);
-		mTicker = 0;
+
 		first = true;
 
-		mFramesPerS = 500;
+		mFramesPerS = 700;
 		mScore = 0;
 		mCorrectCorrdinate = new int[2][2];
 		mCurrindex = 0;
@@ -124,10 +123,6 @@ public class GameScreen extends GLScreen {
 		// adds new integer id to Model Class
 		mPixmaps.add(generateRandom(new Random().nextInt(4)),
 				mCorrectCorrdinate, (int) CurrY + 5, true, mArrayNum);
-		mTicker++;
-		if (mTicker % 10 == 0) {
-			mFramesPerS += 100;
-		}
 
 	}
 
@@ -138,22 +133,23 @@ public class GameScreen extends GLScreen {
 
 		game.getInput().getKeyEvents();
 
-		for (int i = 0; i < mTouches.size(); i++) {
+		for (TouchEvent touch : mTouches) {
 
-			if (mTouches.get(i).type == TouchEvent.TOUCH_UP) {
+			if (touch.type == TouchEvent.TOUCH_UP) {
 				// if first button is touched
 
-				if (((TouchUtils.inBounds(mTouches.get(i),
-						mArrayListx.get(mCurrindex), (int) temp.CurrentY
+				if (((TouchUtils.inBounds(touch, mArrayListx.get(mCurrindex),
+						(int) temp.CurrentY
 								- (int) (205 * (1080 / dimension[1])), 260,
 						550, dimension)))) {
 					mScore += mScoreListx.get(mCurrindex);
 					first = false;
 					setUpNewNode();
+					mFramesPerS += 10;
 					AssetsOG.playSound(AssetsOG.touch);
 				}
 				// if second button is touched
-				else if (((TouchUtils.inBounds(mTouches.get(i),
+				else if (((TouchUtils.inBounds(touch,
 						mArrayList2x.get(mCurrindex), (int) temp.CurrentY
 								- (int) (205 * (1080 / dimension[1])), 260,
 						550, dimension)))) {
@@ -161,6 +157,7 @@ public class GameScreen extends GLScreen {
 
 					first = false;
 					setUpNewNode();
+					mFramesPerS += 10;
 					AssetsOG.playSound(AssetsOG.touch);
 				}
 				// if wrong button is touched
@@ -371,17 +368,17 @@ public class GameScreen extends GLScreen {
 
 	@Override
 	public void pause() {
-		//need to override even if not used
+		// need to override even if not used
 	}
 
 	@Override
 	public void resume() {
-		//need to override even if not used
+		// need to override even if not used
 	}
 
 	@Override
 	public void dispose() {
-		//need to override even if not used
+		// need to override even if not used
 	}
 
 }
