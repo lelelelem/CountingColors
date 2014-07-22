@@ -8,7 +8,6 @@ public class MenuActivity extends SingleFragmentActivity {
 
 	@Override
 	protected Fragment setupFragment() {
-		GameScreenSingleton.setNull();
 		return new MenuFragment();
 	}
 

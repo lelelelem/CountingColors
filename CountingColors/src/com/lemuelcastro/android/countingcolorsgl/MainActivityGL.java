@@ -17,13 +17,11 @@ public class MainActivityGL extends GLGame {
 	private GameScreen gS;
 
 	public Screen getStartScreen() {
-		ActionResolverAndroid mActionResolverAndroid = new ActionResolverAndroid(
-				getApplication());
+		ActionResolverAndroid mActionResolverAndroid = new ActionResolverAndroid(this);
 		try {
 			gS = GameScreenSingleton.get(this, mActionResolverAndroid)
 					.getmGameScreen();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return gS;
@@ -47,7 +45,8 @@ public class MainActivityGL extends GLGame {
 				.setPositiveButton("Yes", new OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						Intent i = new Intent(getApplication(), MenuActivity.class);
+						Intent i = new Intent(getApplication(),
+								MenuActivity.class);
 						i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						startActivity(i);
 					}
@@ -72,5 +71,4 @@ public class MainActivityGL extends GLGame {
 		}
 		firstTimeCreate = true;
 	}
-
 }

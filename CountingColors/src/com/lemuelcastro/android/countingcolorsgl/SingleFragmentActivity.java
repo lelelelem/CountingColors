@@ -19,7 +19,7 @@ public abstract class SingleFragmentActivity extends FragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle arg0) {
-
+		GameScreenSingleton.setNull();
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 

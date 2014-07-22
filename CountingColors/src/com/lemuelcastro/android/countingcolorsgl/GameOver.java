@@ -6,10 +6,8 @@ import android.support.v4.app.Fragment;
 import com.lemuelcastro.android.countingcolors.R;
 
 public class GameOver extends SingleFragmentActivity {
-
 	@Override
 	protected Fragment setupFragment() {
-		GameScreenSingleton.setNull();
 		return new GameOverFragment();
 	}
 
@@ -21,9 +19,8 @@ public class GameOver extends SingleFragmentActivity {
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
-		Intent i = new Intent(this, MenuActivity.class);
-		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		startActivity(i);
+		startActivity(new Intent(this, MenuActivity.class)
+				.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 	}
 
 }

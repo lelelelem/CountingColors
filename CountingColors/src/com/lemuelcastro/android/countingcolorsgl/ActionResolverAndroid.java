@@ -26,7 +26,7 @@ public class ActionResolverAndroid {
 
 	public void showGameOver(int score) {
 		mAppContext.startActivity(new Intent(mAppContext, GameOver.class)
-				.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).putExtra(
+				.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra(
 						GameOverFragment.SCORE, score));
 	}
 

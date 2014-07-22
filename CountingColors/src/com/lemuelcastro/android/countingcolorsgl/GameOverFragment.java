@@ -20,23 +20,22 @@ public class GameOverFragment extends Fragment {
 	private View.OnClickListener mClickListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			Intent i = null;
 			MediaPlayer mP = null;
 			switch (v.getId()) {
 			case R.id.ngame:
 				mP = MediaPlayer.create(getActivity(), R.raw.click);
 				mP.start();
-				i = new Intent(getActivity(), MenuActivity.class)
-						.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(new Intent(getActivity(), MenuActivity.class)
+						.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 				break;
 			case R.id.nG:
 				mP = MediaPlayer.create(getActivity(), R.raw.click);
 				mP.start();
-				i = new Intent(getActivity(), MainActivityGL.class)
-						.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(new Intent(getActivity(), MainActivityGL.class)
+						.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 				break;
 			}
-			startActivity(i);
+
 		}
 	};
 

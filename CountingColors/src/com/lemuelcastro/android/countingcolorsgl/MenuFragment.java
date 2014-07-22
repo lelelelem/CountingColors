@@ -18,7 +18,6 @@ public class MenuFragment extends Fragment {
 	private View.OnClickListener mClickListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
-
 			switch (v.getId()) {
 			case R.id.ngame:
 				mP = MediaPlayer.create(getActivity(), R.raw.click);

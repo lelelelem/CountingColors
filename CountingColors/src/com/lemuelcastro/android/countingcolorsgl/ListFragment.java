@@ -19,8 +19,6 @@ public class ListFragment extends android.support.v4.app.ListFragment {
 		super.onCreate(savedInstanceState);
 		ArrayList<ModelClass> mModelClass = null;
 
-		getActivity().setTitle("Details..Details..and Details..");
-
 		try {
 			mModelClass = ModelSingleton.get(getActivity()).getDetails();
 		} catch (Exception e) {

@@ -42,9 +42,8 @@ public class GameScreen extends GLScreen {
 	private boolean first;
 
 	private int mScore;
-	private int mCorrectCorrdinate[][];
+
 	private int mArrayNum[];
-	private int mCurrindex;
 	private int addhere;
 
 	private PixmapList mPixmaps;
@@ -71,8 +70,6 @@ public class GameScreen extends GLScreen {
 
 		mFramesPerS = 700;
 		mScore = 0;
-		mCorrectCorrdinate = new int[2][2];
-		mCurrindex = 0;
 
 		CurrY = SCREEN_BOTTOM;
 
@@ -122,7 +119,9 @@ public class GameScreen extends GLScreen {
 		// create new tile body
 		// adds new integer id to Model Class
 		mPixmaps.add(generateRandom(new Random().nextInt(4)),
-				mCorrectCorrdinate, (int) CurrY + 5, true, mArrayNum);
+				new int[][] {{ mArrayListx.get(mArrayListx.size() - 1), 0 },
+						{ mArrayList2x.get(mArrayList2x.size() - 1), 0 } },
+				(int) CurrY + 5, true, mArrayNum);
 
 	}
 
@@ -138,11 +137,11 @@ public class GameScreen extends GLScreen {
 			if (touch.type == TouchEvent.TOUCH_UP) {
 				// if first button is touched
 
-				if (((TouchUtils.inBounds(touch, mArrayListx.get(mCurrindex),
+				if (((TouchUtils.inBounds(touch, mArrayListx.get(0),
 						(int) temp.CurrentY
 								- (int) (205 * (1080 / dimension[1])), 260,
 						550, dimension)))) {
-					mScore += mScoreListx.get(mCurrindex);
+					mScore += mScoreListx.get(0);
 					first = false;
 					setUpNewNode();
 					mFramesPerS += 10;
@@ -150,10 +149,10 @@ public class GameScreen extends GLScreen {
 				}
 				// if second button is touched
 				else if (((TouchUtils.inBounds(touch,
-						mArrayList2x.get(mCurrindex), (int) temp.CurrentY
+						mArrayList2x.get(0), (int) temp.CurrentY
 								- (int) (205 * (1080 / dimension[1])), 260,
 						550, dimension)))) {
-					mScore += mScoreList2x.get(mCurrindex);
+					mScore += mScoreList2x.get(0);
 
 					first = false;
 					setUpNewNode();
@@ -277,19 +276,17 @@ public class GameScreen extends GLScreen {
 
 			if (arrayList.get(index) == 0) {
 				sparseArray.put(i, 0);
-				PlaceValue(i, 0);
-				mArrayListx.add(mCorrectCorrdinate[0][0]);
+				mArrayListx.add(PlaceValue(i, 0));
 				if (odds != 1)
 					mArrayList2x.add(9999);
 				PlaceTileScore(0, odds);
 			} else {
 				if (odds == 1 && arrayList.get(index) == 1) {
 					sparseArray.put(i, 0);
-					PlaceValue(i, 1);
-					mArrayList2x.add(mCorrectCorrdinate[1][0]);
+					mArrayList2x.add(PlaceValue(i, 1));
 					PlaceTileScore(1, odds);
-				}
-				else {
+					
+				} else {
 					sparseArray.put(i, 1);
 				}
 			}
@@ -300,16 +297,18 @@ public class GameScreen extends GLScreen {
 	}
 
 	// places coordinate
-	private void PlaceValue(int i, int row) {
+	private int PlaceValue(int i, int row) {
 		if (i == 0) {
-			mCorrectCorrdinate[row][0] = Bounds.xBounds1stLeft.getCoor();
+			return Bounds.xBounds1stLeft.getCoor();
 		} else if (i == 1) {
-			mCorrectCorrdinate[row][0] = Bounds.xBounds2ndLeft.getCoor();
+			return Bounds.xBounds2ndLeft.getCoor();
 		} else if (i == 2) {
-			mCorrectCorrdinate[row][0] = Bounds.xBounds3rdLeft.getCoor();
+			return Bounds.xBounds3rdLeft.getCoor();
 		} else if (i == 3) {
-			mCorrectCorrdinate[row][0] = Bounds.xBounds4thLeft.getCoor();
+			return Bounds.xBounds4thLeft.getCoor();
 		}
+
+		return -1;
 	}
 
 	// places tile score
@@ -372,7 +371,7 @@ public class GameScreen extends GLScreen {
 
 	@Override
 	public void dispose() {
-		// need to override even if not used
+		// need to override even if not used	
 	}
 
 }
