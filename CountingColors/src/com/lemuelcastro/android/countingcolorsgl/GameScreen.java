@@ -6,6 +6,7 @@ import java.util.Random;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import android.util.Log;
 import android.util.SparseIntArray;
 
 import com.badlogic.androidgames.framework.Game;
@@ -33,6 +34,8 @@ public class GameScreen extends GLScreen {
 	private static final int TILE_SPACING = 405;
 	private static final int TILE_WIDTH = 270;
 	private static final int SCREEN_BOTTOM = 0;
+
+	private static final String TAG = null;
 
 	private int mFramesPerS;
 	private float dimension[];
@@ -179,6 +182,8 @@ public class GameScreen extends GLScreen {
 	public void draw(float deltaTime, Data data, int flag) {
 		int arrayCtr = 0;
 
+		Log.i(TAG, "fps:"+(deltaTime*1000));
+		
 		if (!paused)
 			data.CurrentY = mPixmaps.head.CurrentY <= SCREEN_BOTTOM + 205 ? data.CurrentY
 					: data.CurrentY - mFramesPerS * deltaTime;
