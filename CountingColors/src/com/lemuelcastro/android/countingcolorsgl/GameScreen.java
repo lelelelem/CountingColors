@@ -117,16 +117,13 @@ public class GameScreen extends GLScreen {
 
 	// tile creator
 	private void addNode(float CurrY) {
+
 		// used to know if two tiler or single tiler
 		// odds are 1/4
-		int odds = new Random().nextInt(4);
-		// can be replaced by ArrayList
-		SparseIntArray hashtemp = generateRandom(odds);
-
 		// create new tile body
 		// adds new integer id to Model Class
-		mPixmaps.add(hashtemp, mCorrectCorrdinate, (int) CurrY + 5, true,
-				mArrayNum);
+		mPixmaps.add(generateRandom(new Random().nextInt(4)),
+				mCorrectCorrdinate, (int) CurrY + 5, true, mArrayNum);
 		mTicker++;
 		if (mTicker % 10 == 0) {
 			mFramesPerS += 100;
@@ -142,23 +139,24 @@ public class GameScreen extends GLScreen {
 		game.getInput().getKeyEvents();
 
 		for (int i = 0; i < mTouches.size(); i++) {
-			TouchEvent forTouch = mTouches.get(i);
 
-			if (forTouch.type == TouchEvent.TOUCH_UP) {
+			if (mTouches.get(i).type == TouchEvent.TOUCH_UP) {
 				// if first button is touched
 
-				if (((TouchUtils.inBounds(forTouch,
-						mArrayListx.get(mCurrindex), (int) temp.CurrentY - 205,
-						260, 550, dimension)))) {
+				if (((TouchUtils.inBounds(mTouches.get(i),
+						mArrayListx.get(mCurrindex), (int) temp.CurrentY
+								- (int) (205 * (1080 / dimension[1])), 260,
+						550, dimension)))) {
 					mScore += mScoreListx.get(mCurrindex);
 					first = false;
 					setUpNewNode();
 					AssetsOG.playSound(AssetsOG.touch);
 				}
 				// if second button is touched
-				else if (((TouchUtils.inBounds(forTouch,
-						mArrayList2x.get(mCurrindex),
-						(int) temp.CurrentY - 205, 260, 550, dimension)))) {
+				else if (((TouchUtils.inBounds(mTouches.get(i),
+						mArrayList2x.get(mCurrindex), (int) temp.CurrentY
+								- (int) (205 * (1080 / dimension[1])), 260,
+						550, dimension)))) {
 					mScore += mScoreList2x.get(mCurrindex);
 
 					first = false;
@@ -199,14 +197,13 @@ public class GameScreen extends GLScreen {
 			}
 		}
 		for (int j = 0, x = 0; j < 4; j++, x += TILE_WIDTH) {
-
 			if (data.buttonPixmapNode.get(j) == 0) {
 				// draw score
 				if (flag == 0) {
 					mBatcher.beginBatch(AssetsOG.numbers);
 					mBatcher.drawSprite(134 + (float) x, CurrY, 268.0f, 400.0f,
 							new TextureRegion(AssetsOG.numbers,
-									data.numbers[arrayCtr++], 0, 268, 400));
+									data.numbers[arrayCtr++], 0, 268f, 400f));
 				}
 				// draw bg for pressed tile
 				else {
@@ -221,7 +218,6 @@ public class GameScreen extends GLScreen {
 				mBatcher.beginBatch(AssetsOG.tile);
 				mBatcher.drawSprite(134 + (float) x, CurrY, 268.0f, 400.0f,
 						AssetsOG.doNotPressTile);
-
 				mBatcher.endBatch();
 			}
 
@@ -246,7 +242,6 @@ public class GameScreen extends GLScreen {
 			for (int i = 0; i < mData.size(); i++) {
 				if (mData.get(i).CurrentY <= -600) {
 					mData.remove(i);
-
 					continue;
 				}
 				draw(deltaTime, mData.get(i), 1);
@@ -268,7 +263,6 @@ public class GameScreen extends GLScreen {
 
 	// randomly generate button sequence
 	private SparseIntArray generateRandom(int odds) {
-
 		mArrayNum = new int[2];
 
 		arrayList.clear();
@@ -282,7 +276,6 @@ public class GameScreen extends GLScreen {
 		// generate random number then remove it from array list to
 		// avoid duplicate
 		for (int i = 0; i < 4; i++) {
-
 			int index = new Random().nextInt(arrayList.size());
 
 			if (arrayList.get(index) == 0) {
@@ -361,15 +354,14 @@ public class GameScreen extends GLScreen {
 	// draw score box
 	private void drawScore() {
 		String stScore = Integer.toString(mScore);
-		char stScoreArr[] = stScore.toCharArray();
-
-		for (int i = 0, x = 540; i < stScoreArr.length; i++, x += 33) {
-
+		int x = 540;
+		for (char c : stScore.toCharArray()) {
 			mBatcher.beginBatch(AssetsOG.scores);
 			mBatcher.drawSprite(x, 1800, 32f, 42f,
 					AssetsOG.scoresRegion[Integer.parseInt(Character
-							.toString(stScoreArr[i]))]);
+							.toString(c))]);
 			mBatcher.endBatch();
+			x += 33;
 		}
 	}
 
@@ -379,20 +371,17 @@ public class GameScreen extends GLScreen {
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
-
+		//need to override even if not used
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
-
+		//need to override even if not used
 	}
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
-
+		//need to override even if not used
 	}
 
 }

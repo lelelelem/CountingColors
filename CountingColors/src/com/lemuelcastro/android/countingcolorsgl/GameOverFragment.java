@@ -22,7 +22,7 @@ public class GameOverFragment extends Fragment {
 			Intent i = null;
 			switch (v.getId()) {
 			case R.id.ngame:
-				i = new Intent(getActivity(), Menu.class);
+				i = new Intent(getActivity(), MenuActivity.class);
 				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				break;
 			case R.id.nG:

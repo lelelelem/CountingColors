@@ -21,7 +21,7 @@ public class GameOver extends SingleFragmentActivity {
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
-		Intent i = new Intent(this, Menu.class);
+		Intent i = new Intent(this, MenuActivity.class);
 		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(i);
 	}

@@ -25,18 +25,14 @@ public class ActionResolverAndroid {
 	}
 
 	public void showGameOver(int score) {
-		Intent i = new Intent(mAppContext, GameOver.class);
-		i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		i.putExtra(GameOverFragment.SCORE, score);
-		mAppContext.startActivity(i);
+		mAppContext.startActivity(new Intent(mAppContext, GameOver.class)
+				.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).putExtra(
+						GameOverFragment.SCORE, score));
 	}
 
 	public void showMenu() {
-		Intent i = new Intent(mAppContext, Menu.class);
-
-		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-		mAppContext.startActivity(i);
+		mAppContext.startActivity(new Intent(mAppContext, MenuActivity.class)
+				.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 	}
 
 	public void saveScore(int score) throws Exception {

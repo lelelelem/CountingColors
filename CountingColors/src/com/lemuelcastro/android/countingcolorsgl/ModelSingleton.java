@@ -10,7 +10,7 @@ import android.content.Context;
 
 public class ModelSingleton {
 
-	private static final String FILENAME = "crimes.json";
+	private static final String FILENAME = "score.json";
 
 	private ArrayList<ModelClass> mModelClasses;
 

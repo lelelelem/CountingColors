@@ -47,7 +47,7 @@ public class MainActivityGL extends GLGame {
 				.setPositiveButton("Yes", new OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						Intent i = new Intent(getApplication(), Menu.class);
+						Intent i = new Intent(getApplication(), MenuActivity.class);
 						i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						startActivity(i);
 					}
@@ -71,7 +71,6 @@ public class MainActivityGL extends GLGame {
 			e.printStackTrace();
 		}
 		firstTimeCreate = true;
-
 	}
 
 }
