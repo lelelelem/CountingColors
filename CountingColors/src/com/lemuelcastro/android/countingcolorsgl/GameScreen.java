@@ -6,7 +6,6 @@ import java.util.Random;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import android.util.Log;
 import android.util.SparseIntArray;
 
 import com.badlogic.androidgames.framework.Game;
@@ -34,8 +33,6 @@ public class GameScreen extends GLScreen {
 	private static final int TILE_SPACING = 405;
 	private static final int TILE_WIDTH = 270;
 	private static final int SCREEN_BOTTOM = 0;
-
-	private static final String TAG = null;
 
 	private int mFramesPerS;
 	private float dimension[];
@@ -122,7 +119,7 @@ public class GameScreen extends GLScreen {
 		// create new tile body
 		// adds new integer id to Model Class
 		mPixmaps.add(generateRandom(new Random().nextInt(4)),
-				new int[][] {{ mArrayListx.get(mArrayListx.size() - 1), 0 },
+				new int[][] { { mArrayListx.get(mArrayListx.size() - 1), 0 },
 						{ mArrayList2x.get(mArrayList2x.size() - 1), 0 } },
 				(int) CurrY + 5, true, mArrayNum);
 
@@ -151,8 +148,8 @@ public class GameScreen extends GLScreen {
 					AssetsOG.playSound(AssetsOG.touch);
 				}
 				// if second button is touched
-				else if (((TouchUtils.inBounds(touch,
-						mArrayList2x.get(0), (int) temp.CurrentY
+				else if (((TouchUtils.inBounds(touch, mArrayList2x.get(0),
+						(int) temp.CurrentY
 								- (int) (205 * (1080 / dimension[1])), 260,
 						550, dimension)))) {
 					mScore += mScoreList2x.get(0);
@@ -182,8 +179,6 @@ public class GameScreen extends GLScreen {
 	public void draw(float deltaTime, Data data, int flag) {
 		int arrayCtr = 0;
 
-		Log.i(TAG, "fps:"+(deltaTime*1000));
-		
 		if (!paused)
 			data.CurrentY = mPixmaps.head.CurrentY <= SCREEN_BOTTOM + 205 ? data.CurrentY
 					: data.CurrentY - mFramesPerS * deltaTime;
@@ -290,7 +285,7 @@ public class GameScreen extends GLScreen {
 					sparseArray.put(i, 0);
 					mArrayList2x.add(PlaceValue(i, 1));
 					PlaceTileScore(1, odds);
-					
+
 				} else {
 					sparseArray.put(i, 1);
 				}
@@ -376,7 +371,7 @@ public class GameScreen extends GLScreen {
 
 	@Override
 	public void dispose() {
-		// need to override even if not used	
+		// need to override even if not used
 	}
 
 }
