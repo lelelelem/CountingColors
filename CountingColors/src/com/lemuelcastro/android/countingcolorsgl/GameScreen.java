@@ -287,15 +287,12 @@ public class GameScreen extends GLScreen {
 					sparseArray.put(i, 0);
 					PlaceValue(i, 1);
 					mArrayList2x.add(mCorrectCorrdinate[1][0]);
-
 					PlaceTileScore(1, odds);
 				}
-
 				else {
 					sparseArray.put(i, 1);
 				}
 			}
-
 			arrayList.remove(index);
 		}
 
@@ -307,13 +304,10 @@ public class GameScreen extends GLScreen {
 		if (i == 0) {
 			mCorrectCorrdinate[row][0] = Bounds.xBounds1stLeft.getCoor();
 		} else if (i == 1) {
-
 			mCorrectCorrdinate[row][0] = Bounds.xBounds2ndLeft.getCoor();
 		} else if (i == 2) {
-
 			mCorrectCorrdinate[row][0] = Bounds.xBounds3rdLeft.getCoor();
 		} else if (i == 3) {
-
 			mCorrectCorrdinate[row][0] = Bounds.xBounds4thLeft.getCoor();
 		}
 	}

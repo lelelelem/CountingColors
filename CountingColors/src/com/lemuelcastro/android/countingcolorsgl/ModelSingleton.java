@@ -54,6 +54,7 @@ public class ModelSingleton {
 	public ArrayList<ModelClass> highScores() {
 
 		ArrayList<ModelClass> tempModelClasses = new ArrayList<ModelClass>();
+		ArrayList<ModelClass> tempModelClasses2 = new ArrayList<ModelClass>();
 		try {
 			tempModelClasses = mJsonSerializer.loadDetails();
 		} catch (Exception e1) {
@@ -62,7 +63,12 @@ public class ModelSingleton {
 
 		Collections.sort(tempModelClasses);
 
-		return tempModelClasses;
+		for(ModelClass mC:tempModelClasses){
+			if(tempModelClasses2.size()>9)
+				break;
+			tempModelClasses2.add(mC);
+		}
+		return tempModelClasses2;
 
 	}
 

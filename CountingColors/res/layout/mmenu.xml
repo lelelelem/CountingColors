@@ -53,6 +53,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="N"
+            android:soundEffectsEnabled="true"
             android:layout_marginRight="24dp"
             android:padding="10dp"
             android:textSize="50sp" />
@@ -62,6 +63,7 @@
             style="@style/press"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:soundEffectsEnabled="true"
             android:text="H"
             android:textSize="50sp" />
 

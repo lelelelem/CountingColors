@@ -1,6 +1,7 @@
 package com.lemuelcastro.android.countingcolorsgl;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -20,14 +21,19 @@ public class GameOverFragment extends Fragment {
 		@Override
 		public void onClick(View v) {
 			Intent i = null;
+			MediaPlayer mP = null;
 			switch (v.getId()) {
 			case R.id.ngame:
-				i = new Intent(getActivity(), MenuActivity.class);
-				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				mP = MediaPlayer.create(getActivity(), R.raw.click);
+				mP.start();
+				i = new Intent(getActivity(), MenuActivity.class)
+						.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				break;
 			case R.id.nG:
-				i = new Intent(getActivity(), MainActivityGL.class);
-				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				mP = MediaPlayer.create(getActivity(), R.raw.click);
+				mP.start();
+				i = new Intent(getActivity(), MainActivityGL.class)
+						.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				break;
 			}
 			startActivity(i);
