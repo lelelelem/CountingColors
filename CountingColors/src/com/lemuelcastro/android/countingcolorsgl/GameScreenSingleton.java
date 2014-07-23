@@ -19,7 +19,7 @@ public class GameScreenSingleton {
 		return sGameScreenSingleton;
 	}
 
-	public GameScreen getmGameScreen() {
+	public GameScreen getGameScreen() {
 		return mGameScreen;
 	}
 	

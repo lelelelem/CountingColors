@@ -21,7 +21,7 @@ public class MainActivityGL extends GLGame {
 				this);
 		try {
 			gS = GameScreenSingleton.get(this, mActionResolverAndroid)
-					.getmGameScreen();
+					.getGameScreen();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -66,7 +66,7 @@ public class MainActivityGL extends GLGame {
 				this);
 		try {
 			gS = GameScreenSingleton.get(this, mActionResolverAndroid)
-					.getmGameScreen();
+					.getGameScreen();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

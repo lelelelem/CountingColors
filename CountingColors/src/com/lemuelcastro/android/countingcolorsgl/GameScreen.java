@@ -274,15 +274,15 @@ public class GameScreen extends GLScreen {
 
 			if (arrayList.get(index) == 0) {
 				sparseArray.put(i, 0);
-				mArrayListx.add(PlaceValue(i, 0));
+				mArrayListx.add(placeValue(i));
 				if (odds != 1)
 					mArrayList2x.add(9999);
-				PlaceTileScore(0, odds);
+				placeTileScore(0, odds);
 			} else {
 				if (odds == 1 && arrayList.get(index) == 1) {
 					sparseArray.put(i, 0);
-					mArrayList2x.add(PlaceValue(i, 1));
-					PlaceTileScore(1, odds);
+					mArrayList2x.add(placeValue(i));
+					placeTileScore(1, odds);
 
 				} else {
 					sparseArray.put(i, 1);
@@ -295,7 +295,7 @@ public class GameScreen extends GLScreen {
 	}
 
 	// places coordinate
-	private int PlaceValue(int i, int row) {
+	private int placeValue(int i) {
 		if (i == 0) {
 			return Bounds.xBounds1stLeft.getCoor();
 		} else if (i == 1) {
@@ -310,7 +310,7 @@ public class GameScreen extends GLScreen {
 	}
 
 	// places tile score
-	private void PlaceTileScore(int row, int odds) {
+	private void placeTileScore(int row, int odds) {
 		mArrayNum[row] = new Random().nextInt(4);
 
 		if (mArrayNum[row] == 0) {
