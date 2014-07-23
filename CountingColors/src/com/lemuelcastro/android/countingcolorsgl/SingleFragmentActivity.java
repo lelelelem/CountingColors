@@ -27,9 +27,7 @@ public abstract class SingleFragmentActivity extends FragmentActivity {
 		setContentView(setupMain());
 
 		FragmentManager fm = getSupportFragmentManager();
-		Fragment fragment = fm.findFragmentById(R.id.main);
-
-		fragment = setupFragment();
+		Fragment fragment =setupFragment();
 
 		fm.beginTransaction().add(R.id.main, fragment).commit();
 	}
