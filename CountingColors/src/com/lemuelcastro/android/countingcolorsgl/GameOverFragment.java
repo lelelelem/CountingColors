@@ -16,11 +16,12 @@ import com.lemuelcastro.android.countingcolors.R;
 public class GameOverFragment extends Fragment {
 
 	public static final String SCORE = "score";
+	private MediaPlayer mP = null;
 
 	private View.OnClickListener mClickListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			MediaPlayer mP = null;
+
 			switch (v.getId()) {
 			case R.id.ngame:
 				mP = MediaPlayer.create(getActivity(), R.raw.click);
@@ -60,6 +61,16 @@ public class GameOverFragment extends Fragment {
 		newGameButton.setOnClickListener(mClickListener);
 
 		return v;
+	}
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		mP.stop();
+		mP.release();
+		//just to make sure that the MediaPlayer is released
+		//though not necessary needed
+		mP = null;
 	}
 
 }

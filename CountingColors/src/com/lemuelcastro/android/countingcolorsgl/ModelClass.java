@@ -12,7 +12,9 @@ public class ModelClass implements Serializable, Comparable<ModelClass> {
 
 	private String mScore;
 
+	// thinking of using static factory instead
 	public ModelClass() {
+		// used for initialization
 	}
 
 	public ModelClass(JSONObject jsonObject) throws JSONException {
@@ -39,7 +41,7 @@ public class ModelClass implements Serializable, Comparable<ModelClass> {
 
 	@Override
 	public int compareTo(ModelClass another) {
-		return Integer.parseInt(another.mScore)-Integer.parseInt(this.mScore);
+		return Integer.parseInt(another.mScore) - Integer.parseInt(this.mScore);
 	}
 
 }

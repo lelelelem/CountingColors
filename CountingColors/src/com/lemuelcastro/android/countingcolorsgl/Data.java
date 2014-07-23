@@ -6,14 +6,10 @@ import android.util.SparseIntArray;
 //Representation of Tiles
 @SuppressLint("UseSparseArrays")
 public class Data {
-
 	Data next;
-	boolean isHead;
 	SparseIntArray buttonPixmapNode = new SparseIntArray();
 	int numbers[] = new int[2];
-
 	float CurrentY;
-	boolean toMove;
 }
 
 class PixmapList {
@@ -31,8 +27,6 @@ class PixmapList {
 			head = temp;
 			tail = temp;
 			head.CurrentY = CurrentY;
-			head.toMove = lock;
-			head.isHead = true;
 			head.numbers = tileScore;
 			head.buttonPixmapNode = imgTiles;
 			holdInfo = head;
@@ -41,11 +35,9 @@ class PixmapList {
 			tail.next = temp;
 			tail = temp;
 			tail.next = null;
-			head.isHead = false;
 			tail.numbers = tileScore;
 			tail.CurrentY = CurrentY;
 			tail.buttonPixmapNode = imgTiles;
-			head.toMove = lock;
 		}
 		size++;
 	}

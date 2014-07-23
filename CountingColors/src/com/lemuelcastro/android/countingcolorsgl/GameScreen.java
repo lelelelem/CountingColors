@@ -18,29 +18,31 @@ import com.badlogic.androidgames.framework.impl.GLScreen;
 public class GameScreen extends GLScreen {
 
 	private boolean paused;
+	private boolean first;
 
 	private ActionResolverAndroid mActionResolver;
 
 	private ArrayList<Data> mData = new ArrayList<Data>();
+
 	private ArrayList<Integer> mArrayListx = new ArrayList<Integer>();
 	private ArrayList<Integer> mArrayList2x = new ArrayList<Integer>();
 
 	private ArrayList<Integer> arrayList = new ArrayList<Integer>();
-	private SparseIntArray sparseArray;
+
 	private ArrayList<Integer> mScoreListx = new ArrayList<Integer>();
 	private ArrayList<Integer> mScoreList2x = new ArrayList<Integer>();
+
+	private SparseIntArray sparseArray;
 
 	private static final int TILE_SPACING = 405;
 	private static final int TILE_WIDTH = 270;
 	private static final int SCREEN_BOTTOM = 0;
 
-	private int mFramesPerS;
-	private float dimension[];
 	private Data temp;
+	private float dimension[];
 	private float CurrY;
 
-	private boolean first;
-
+	private int mFramesPerS;
 	private int mScore;
 
 	private int mArrayNum[];
@@ -118,7 +120,8 @@ public class GameScreen extends GLScreen {
 		// odds are 1/4
 		// create new tile body
 		// adds new integer id to Model Class
-		mPixmaps.add(generateRandom(new Random().nextInt(4)),(int) CurrY + 5, true, mArrayNum);
+		mPixmaps.add(generateRandom(new Random().nextInt(4)), (int) CurrY + 5,
+				true, mArrayNum);
 
 	}
 
@@ -126,8 +129,6 @@ public class GameScreen extends GLScreen {
 	public void update(float deltaTime) {
 
 		mTouches = game.getInput().getTouchEvents();
-
-		game.getInput().getKeyEvents();
 
 		for (TouchEvent touch : mTouches) {
 

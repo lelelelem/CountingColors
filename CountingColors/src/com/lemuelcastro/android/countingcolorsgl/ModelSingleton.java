@@ -63,8 +63,8 @@ public class ModelSingleton {
 
 		Collections.sort(tempModelClasses);
 
-		for(ModelClass mC:tempModelClasses){
-			if(tempModelClasses2.size()>9)
+		for (ModelClass mC : tempModelClasses) {
+			if (tempModelClasses2.size() > 9)
 				break;
 			tempModelClasses2.add(mC);
 		}

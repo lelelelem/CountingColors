@@ -17,7 +17,8 @@ public class MainActivityGL extends GLGame {
 	private GameScreen gS;
 
 	public Screen getStartScreen() {
-		ActionResolverAndroid mActionResolverAndroid = new ActionResolverAndroid(this);
+		ActionResolverAndroid mActionResolverAndroid = new ActionResolverAndroid(
+				this);
 		try {
 			gS = GameScreenSingleton.get(this, mActionResolverAndroid)
 					.getmGameScreen();
@@ -62,7 +63,7 @@ public class MainActivityGL extends GLGame {
 	public void onResume() {
 		super.onResume();
 		ActionResolverAndroid mActionResolverAndroid = new ActionResolverAndroid(
-				getApplication());
+				this);
 		try {
 			gS = GameScreenSingleton.get(this, mActionResolverAndroid)
 					.getmGameScreen();
