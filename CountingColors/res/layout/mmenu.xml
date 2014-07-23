@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/DarkSlateGray"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/TextView01"
+        style="@style/shadow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:text="COUNTING"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White"
+        android:textSize="64sp"
+        android:textStyle="bold"
+        android:typeface="monospace" />
+
+    <TextView
+        android:id="@+id/textView1"
+        style="@style/shadow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="COLORS"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White"
+        android:textSize="64sp"
+        android:textStyle="bold"
+        android:typeface="monospace" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:src="@drawable/line_shape" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/ngame"
+            style="@style/press"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="N"
+            android:soundEffectsEnabled="true"
+            android:layout_marginRight="24dp"
+            android:padding="10dp"
+            android:textSize="50sp" />
+
+        <Button
+            android:id="@+id/hscore"
+            style="@style/press"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:soundEffectsEnabled="true"
+            android:text="H"
+            android:textSize="50sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
