@@ -93,7 +93,7 @@ public class GameScreen extends GLScreen {
 	}
 
 	// start intent for gameoverActivity
-	private void GOver() throws Exception {
+	private void endGame() throws Exception {
 		if (mScore != 0)
 			mActionResolver.saveScore(mScore);
 
@@ -118,10 +118,7 @@ public class GameScreen extends GLScreen {
 		// odds are 1/4
 		// create new tile body
 		// adds new integer id to Model Class
-		mPixmaps.add(generateRandom(new Random().nextInt(4)),
-				new int[][] { { mArrayListx.get(mArrayListx.size() - 1), 0 },
-						{ mArrayList2x.get(mArrayList2x.size() - 1), 0 } },
-				(int) CurrY + 5, true, mArrayNum);
+		mPixmaps.add(generateRandom(new Random().nextInt(4)),(int) CurrY + 5, true, mArrayNum);
 
 	}
 
@@ -162,7 +159,7 @@ public class GameScreen extends GLScreen {
 				// if wrong button is touched
 				else {
 					try {
-						GOver();
+						endGame();
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -187,7 +184,7 @@ public class GameScreen extends GLScreen {
 
 		if (flag == 0 && CurrY <= SCREEN_BOTTOM + 205 && !first) {
 			try {
-				GOver();
+				endGame();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

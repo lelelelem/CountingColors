@@ -22,13 +22,8 @@ class PixmapList {
 	int size = 0;
 	boolean first = true;
 
-	PixmapList() {
-		head = null;
-		tail = null;
-	}
-
-	public void add(SparseIntArray imgTiles, int coor[][], int CurrentY,
-			boolean lock, int tileScore[]) {
+	public void add(SparseIntArray imgTiles, int CurrentY, boolean lock,
+			int tileScore[]) {
 
 		temp = new Data();
 
@@ -61,11 +56,7 @@ class PixmapList {
 
 	public Data getInfo() {
 
-		if (head.next == null) {
-		}
-
 		if (size == 0 || holdInfo == null && !first) {
-
 			holdInfo = head;
 			return null;
 		}

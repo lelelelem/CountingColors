@@ -11,7 +11,6 @@ final class AssetsOG {
 	public static Texture numbers;
 	public static TextureRegion numbersRegion[] = new TextureRegion[4];
 
-	public static Texture numberTiles;
 	public static TextureRegion pressedTile, doNotPressTile;
 
 	public static Texture scores;
